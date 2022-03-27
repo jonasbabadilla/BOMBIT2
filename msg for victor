@@ -2,11 +2,11 @@ https://github.com/veandco/go-sdl2/#installation
 
 This is the package we're using
 
-If you scroll past the files/folders, you'll find a Table of Contents
+However go get _____ isn't enough. You'll need to actually install it into your directory.
 
-There you will see an "Installation" hyperlink, it holds info on how to install respective to your device.
+The link should lead you to the installation selection and there you'll get some directoin
 
 Also
 
-main.go isn't done yet so don't worry about running it right now. UPATE: main.go DOES WORK, however its just an empty white tab
+main.go isn't done yet so don't worry about running it right now. UPATE: main.go DOES WORK, however its just an empty white tab (which is what was planned)
 Test.go does work and does infact open a window. 
