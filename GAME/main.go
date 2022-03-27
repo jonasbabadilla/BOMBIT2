@@ -6,6 +6,8 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
+// Currently needs tweaking
+
 const (
 	screenHeight = 800
 	screenWidth  = 600
@@ -17,11 +19,12 @@ func main() {
 		return
 	}
 
+	// creates the window
 	window, err := sdl.CreateWindow(
-		"GAMING WITH SDL",
-		800, 600,
-		screenWidth, screenHeight,
-		sdl.WINDOW_OPENGL)
+		"GAMING WITH SDL",                                // title of window
+		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED, // where the window is placed on screen
+		screenWidth, screenHeight, // paremeters
+		sdl.WINDOW_OPENGL) // flag
 
 	if err != nil {
 		fmt.Println("initializing window:", err)
@@ -30,7 +33,7 @@ func main() {
 
 	defer window.Destroy()
 
-	renderer, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
+	renderer, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED) //
 	if err != nil {
 		fmt.Println("initializing renderer:", err)
 		return
@@ -38,7 +41,7 @@ func main() {
 
 	defer renderer.Destroy()
 	for {
-		renderer.SetDrawColor(255, 255, 255, 255)
+		renderer.SetDrawColor(255, 255, 255, 255) // color value = white at the moment
 		renderer.Clear()
 
 		renderer.Present()
