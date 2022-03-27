@@ -6,11 +6,9 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-// Currently needs tweaking
-
 const (
-	screenHeight = 800
-	screenWidth  = 600
+	screenHeight = 640
+	screenWidth  = 640
 )
 
 func main() {
