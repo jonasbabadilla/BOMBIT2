@@ -8,5 +8,5 @@ There you will see an "Installation" hyperlink, it holds info on how to install 
 
 Also
 
-main.go isn't done yet so don't worry about running it right now.
+main.go isn't done yet so don't worry about running it right now. UPATE: main.go DOES WORK, however its just an empty white tab
 Test.go does work and does infact open a window. 
