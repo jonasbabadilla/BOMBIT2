@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	screenHeight = 640
-	screenWidth  = 640
+	screenHeight = 500
+	screenWidth  = 500
 )
 
 func main() {
@@ -39,10 +39,17 @@ func main() {
 
 	defer renderer.Destroy()
 	for {
+		// event compiler
+		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
+			switch event.(type) {
+			case *sdl.QuitEvent: // this is for if the event type (quit event) == true
+				return
+			}
+		}
 		renderer.SetDrawColor(255, 255, 255, 255) // color value = white at the moment
 		renderer.Clear()
 
-		renderer.Present()
+		renderer.Present() // Presents the elements that the renderer currently has
 
 	}
 }
