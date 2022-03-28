@@ -12,7 +12,7 @@ type player struct{
 func Stickman(rednerer *sdl.Renderer) (p player, err error) {
 	var p player
 	
-	img, err := sdl.LoadBMP("SPRITES/stickman.bmp")
+	img, err := sdl.LoadBMP("SPRITES/BG1.bmp")
 	if err != nil {
 		return player{}, fmt.Errorf("loading player sprite:", err)
 	}
@@ -24,3 +24,5 @@ func Stickman(rednerer *sdl.Renderer) (p player, err error) {
 	}
 	return p, nil
 }
+
+// currently not in use

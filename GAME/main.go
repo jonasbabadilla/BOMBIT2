@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -10,6 +12,11 @@ const (
 	screenHeight = 560
 	screenWidth  = 960
 )
+
+var IMG = [2]string{
+	"SPRITES/BG1.bmp",
+	"SPRITES/BG2.bmp",
+}
 
 func main() {
 	if err := sdl.Init(uint32(sdl.INIT_EVERYTHING)); err != nil {
@@ -39,23 +46,53 @@ func main() {
 
 	defer renderer.Destroy()
 
-	img, err := sdl.LoadBMP("SPRITES/BG1.bmp")
-	if err != nil {
-		fmt.Println("loading prayer sprite:", err)
-		return
+	var playertex *sdl.Texture
+	var img *sdl.Surface
+	var rng int
+	rand.Seed(time.Now().Unix())
+
+	for i := 0; i < 25; i++ {
+		rng = rand.Intn(2)
 	}
 
-	playertex, err := renderer.CreateTextureFromSurface(img)
+	switch rng {
+
+	case 0:
+		img, err = sdl.LoadBMP("SPRITES/BG1.bmp")
+		if err != nil {
+			fmt.Println("loading prayer sprite:", err)
+			return
+		}
+		playertex, err = renderer.CreateTextureFromSurface(img)
+		if err != nil {
+			fmt.Println("loading texture:", err)
+			return
+		}
+
+	case 1:
+		img, err = sdl.LoadBMP("SPRITES/BG2.bmp")
+		if err != nil {
+			fmt.Println("loading prayer sprite:", err)
+			return
+		}
+		playertex, err = renderer.CreateTextureFromSurface(img)
+		if err != nil {
+			fmt.Println("loading texture:", err)
+			return
+		}
+
+	}
+
 	if err != nil {
 		fmt.Println("loading texture:", err)
 		return
 	}
 
 	for {
-		// event compiler
+
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 			switch event.(type) {
-			case *sdl.QuitEvent: // this is for if the event type (quit event) == true
+			case *sdl.QuitEvent:
 				return
 			}
 		}
@@ -66,7 +103,7 @@ func main() {
 			&sdl.Rect{X: 0, Y: 0, W: 960, H: 560},
 			&sdl.Rect{X: 0, Y: 0, W: 960, H: 560})
 
-		renderer.Present() // Presents the elements that the renderer currently has
+		renderer.Present()
 
 	}
 }
