@@ -38,6 +38,19 @@ func main() {
 	}
 
 	defer renderer.Destroy()
+
+	img, err := sdl.LoadBMP("SPRITES/BG1.bmp")
+	if err != nil {
+		fmt.Println("loading prayer sprite:", err)
+		return
+	}
+
+	playertex, err := renderer.CreateTextureFromSurface(img)
+	if err != nil {
+		fmt.Println("loading texture:", err)
+		return
+	}
+
 	for {
 		// event compiler
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
@@ -48,6 +61,10 @@ func main() {
 		}
 		renderer.SetDrawColor(255, 255, 255, 255) // color value = white at the moment
 		renderer.Clear()
+
+		renderer.Copy(playertex,
+			&sdl.Rect{X: 0, Y: 0, W: 960, H: 560},
+			&sdl.Rect{X: 0, Y: 0, W: 960, H: 560})
 
 		renderer.Present() // Presents the elements that the renderer currently has
 
