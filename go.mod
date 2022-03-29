@@ -1,4 +1,4 @@
-module sdl
+module chaseGame
 
 go 1.18
 

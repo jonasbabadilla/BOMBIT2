@@ -1,4 +1,4 @@
-package main
+package MainGame
 
 import (
 	"fmt"
@@ -6,12 +6,13 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-const (
-	screenWidth  = 1280
-	screenHeight = 720
-)
+var ScreenWidth int32
+var ScreenHeight int32
 
 func main() {
+
+	Resolution = Dimensions{1280, 720}
+
 	if err := sdl.Init(uint32(sdl.INIT_EVERYTHING)); err != nil {
 		fmt.Println("initializing sdl:", err)
 		return
@@ -20,7 +21,7 @@ func main() {
 	window, err := sdl.CreateWindow(
 		"GAMING WITH SDL",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
-		screenWidth, screenHeight,
+		ScreenWidth, ScreenHeight,
 		sdl.WINDOW_OPENGL)
 
 	if err != nil {
@@ -38,13 +39,13 @@ func main() {
 
 	defer renderer.Destroy()
 
-	plr, err := newPlayer(renderer)
+	plr, err := NewPlayer(renderer)
 	if err != nil {
 		fmt.Println("creating player:", err)
 		return
 	}
 
-	bar, err := newObject(renderer)
+	bar, err := NewObject(renderer)
 
 	for {
 
