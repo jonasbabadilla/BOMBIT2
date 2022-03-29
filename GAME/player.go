@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	//"time"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -14,9 +13,10 @@ type player struct {
 	//LastPress                 time.Time
 }
 
+var JumpTimer int
+
 var gravity = 1
-var jump int
-var gravCount int
+var JumpState bool
 
 const (
 	playerSpeedX = 1.00
@@ -61,15 +61,22 @@ func (p *player) Update() {
 		p.x += playerSpeedX
 	}
 
-	if keys[sdl.SCANCODE_UP] == 1 {
-		/*p.LastPress = time.Now()
-		if time.Since(p.LastPress) < CoolDown {
-			p.y -= (playerSpeedY)
-			sdl.Delay(1000)
-		} else {
-			p.y += (playerSpeedY)
-		}*/
+	if keys[sdl.SCANCODE_UP] == 1 && JumpState != true {
+		JumpState = true
 	}
+
+	p.CalcJump()
 	p.y += float64(gravity)
 	sdl.Delay(1000 / 60)
+}
+
+func (p *player) CalcJump() {
+	if JumpState {
+		p.y -= playerSpeedY
+		JumpTimer++
+		if JumpTimer >= 20 {
+			p.y += playerSpeedY + float64(gravity)
+		}
+	}
+	checkCollision()
 }

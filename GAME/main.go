@@ -11,10 +11,15 @@ const (
 	screenHeight = 720
 )
 
-func checkCollision(p *player, b *object) {
-	if p.y+float64(p.playerHeight*2) == float64(b.y) {
-		if p.x <= float64(b.objectWidth+(b.x)) && p.x >= float64(b.x-(b.objectWidth)) {
-			p.y -= float64(gravity)
+var pChar player
+var levelObject object
+
+func checkCollision() {
+	if pChar.y+float64(pChar.playerHeight*2) == float64(levelObject.y) {
+		if pChar.x <= float64(levelObject.objectWidth+(levelObject.x)) && pChar.x >= float64(levelObject.x-(levelObject.objectWidth)) {
+			pChar.y -= float64(gravity)
+			JumpState = false
+			JumpTimer = 0
 		}
 	}
 
@@ -41,12 +46,12 @@ func main() {
 		return
 	}
 	defer renderer.Destroy()
-	plr, err := NewPlayer(renderer)
+	pChar, err = NewPlayer(renderer)
 	if err != nil {
 		fmt.Println("creating player:", err)
 		return
 	}
-	bar, err := NewObject(renderer)
+	levelObject, err = NewObject(renderer)
 	for {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 			switch event.(type) {
@@ -56,14 +61,14 @@ func main() {
 		}
 		renderer.SetDrawColor(119, 23, 23, 0)
 		renderer.Clear()
-		plr.Draw(renderer)
-		plr.Update()
+		pChar.Draw(renderer)
+		pChar.Update()
 
-		bar.Draw(renderer)
-		bar.Update()
+		levelObject.Draw(renderer)
+		levelObject.Update()
 
 		renderer.Present()
-		checkCollision(&plr, &bar)
+		checkCollision()
 
 	}
 }

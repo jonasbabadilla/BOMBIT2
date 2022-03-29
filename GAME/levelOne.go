@@ -23,8 +23,8 @@ func NewObject(renderer *sdl.Renderer) (o object, err error) {
 		return
 	}
 
-	o.x = 200
-	o.y = 200
+	o.x = 600
+	o.y = 500
 
 	return o, nil
 }
