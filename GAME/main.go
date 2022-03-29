@@ -17,12 +17,11 @@ func main() {
 		return
 	}
 
-	// creates the window
 	window, err := sdl.CreateWindow(
-		"GAMING WITH SDL",                                // title of window
-		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED, // where the window is placed on screen
-		screenWidth, screenHeight, // paremeters
-		sdl.WINDOW_OPENGL) // flag
+		"GAMING WITH SDL",
+		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
+		screenWidth, screenHeight,
+		sdl.WINDOW_OPENGL)
 
 	if err != nil {
 		fmt.Println("initializing window:", err)
@@ -31,7 +30,7 @@ func main() {
 
 	defer window.Destroy()
 
-	renderer, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED) //
+	renderer, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
 	if err != nil {
 		fmt.Println("initializing renderer:", err)
 		return
@@ -39,16 +38,12 @@ func main() {
 
 	defer renderer.Destroy()
 
-	if err != nil {
-		fmt.Println("loading texture:", err)
-		return
-	}
-
 	char, err := sdl.LoadBMP("SPRITES/playerSprite.bmp")
 	if err != nil {
 		fmt.Println("loading texture:", err)
 		return
 	}
+
 	playerchar, err := renderer.CreateTextureFromSurface(char)
 	if err != nil {
 		fmt.Println("loading texture:", err)
@@ -63,12 +58,8 @@ func main() {
 				return
 			}
 		}
-<<<<<<< HEAD
 
-		renderer.SetDrawColor(255, 255, 255, 255) // color value = white at the moment
-=======
-		renderer.SetDrawColor(84, 84, 84, 255) // color value = white at the moment
->>>>>>> b26d76bf8c0e87c5437ba380942c1fbafd34dead
+		renderer.SetDrawColor(119, 23, 23, 0) // color value = white at the moment
 		renderer.Clear()
 
 		renderer.Copy(playerchar,
