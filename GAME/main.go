@@ -9,8 +9,8 @@ import (
 )
 
 const (
-	screenHeight = 560
-	screenWidth  = 960
+	screenHeight = 1280
+	screenWidth  = 720
 )
 
 func main() {
