@@ -13,11 +13,6 @@ const (
 	screenWidth  = 960
 )
 
-var IMG = [2]string{
-	"SPRITES/BG1.bmp",
-	"SPRITES/BG2.bmp",
-}
-
 func main() {
 	if err := sdl.Init(uint32(sdl.INIT_EVERYTHING)); err != nil {
 		fmt.Println("initializing sdl:", err)
