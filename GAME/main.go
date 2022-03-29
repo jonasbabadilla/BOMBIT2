@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -41,43 +39,6 @@ func main() {
 
 	defer renderer.Destroy()
 
-	var playertex *sdl.Texture
-	var img *sdl.Surface
-	var rng int
-	rand.Seed(time.Now().Unix())
-
-	for i := 0; i < 25; i++ {
-		rng = rand.Intn(2)
-	}
-
-	switch rng {
-
-	case 0:
-		img, err = sdl.LoadBMP("SPRITES/CenterFinder.bmp")
-		if err != nil {
-			fmt.Println("loading prayer sprite:", err)
-			return
-		}
-		playertex, err = renderer.CreateTextureFromSurface(img)
-		if err != nil {
-			fmt.Println("loading texture:", err)
-			return
-		}
-
-	case 1:
-		img, err = sdl.LoadBMP("SPRITES/CenterFinder.bmp")
-		if err != nil {
-			fmt.Println("loading prayer sprite:", err)
-			return
-		}
-		playertex, err = renderer.CreateTextureFromSurface(img)
-		if err != nil {
-			fmt.Println("loading texture:", err)
-			return
-		}
-
-	}
-
 	if err != nil {
 		fmt.Println("loading texture:", err)
 		return
@@ -102,12 +63,8 @@ func main() {
 				return
 			}
 		}
-		renderer.SetDrawColor(255, 255, 255, 255) // color value = white at the moment
+		renderer.SetDrawColor(84, 84, 84, 255) // color value = white at the moment
 		renderer.Clear()
-
-		renderer.Copy(playertex,
-			&sdl.Rect{X: 0, Y: 0, W: 1280, H: 720},
-			&sdl.Rect{X: 0, Y: 0, W: 1280, H: 720})
 
 		renderer.Copy(playerchar,
 			&sdl.Rect{X: 0, Y: 0, W: 64, H: 64},
