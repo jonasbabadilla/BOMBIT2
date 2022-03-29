@@ -5,7 +5,7 @@ import (
 )
 
 type player struct {
-	tex *sdl.Texture
+	pTex *sdl.Texture
 }
 
 func newPlayer(renderer *sdl.Renderer) (p player, e error) {
