@@ -1,4 +1,4 @@
-package MainGame
+package main
 
 import (
 	"math"
