@@ -3,8 +3,6 @@ package MainGame
 import (
 	"fmt"
 
-	"chaseGame/GAME/StoryGame"
-
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -13,7 +11,7 @@ var ScreenHeight int32
 
 func main() {
 
-	StoryGame.Resolution = StoryGame.Dimensions{1280, 720}
+	Resolution = Dimensions{1280, 720}
 
 	if err := sdl.Init(uint32(sdl.INIT_EVERYTHING)); err != nil {
 		fmt.Println("initializing sdl:", err)
@@ -41,13 +39,13 @@ func main() {
 
 	defer renderer.Destroy()
 
-	plr, err := StoryGame.NewPlayer(renderer)
+	plr, err := NewPlayer(renderer)
 	if err != nil {
 		fmt.Println("creating player:", err)
 		return
 	}
 
-	bar, err := StoryGame.NewObject(renderer)
+	bar, err := NewObject(renderer)
 
 	for {
 

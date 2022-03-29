@@ -1,4 +1,4 @@
-package StoryGame
+package MainGame
 
 import (
 	"math"
