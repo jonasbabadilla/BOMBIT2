@@ -102,6 +102,7 @@ func main() {
 				return
 			}
 		}
+
 		renderer.SetDrawColor(255, 255, 255, 255) // color value = white at the moment
 		renderer.Clear()
 
