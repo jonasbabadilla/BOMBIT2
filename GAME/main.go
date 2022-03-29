@@ -9,8 +9,8 @@ import (
 )
 
 const (
-	screenHeight = 1280
-	screenWidth  = 720
+	screenHeight = 720
+	screenWidth  = 1280
 )
 
 func main() {
@@ -53,7 +53,7 @@ func main() {
 	switch rng {
 
 	case 0:
-		img, err = sdl.LoadBMP("SPRITES/BG1.bmp")
+		img, err = sdl.LoadBMP("SPRITES/CenterFinder.bmp")
 		if err != nil {
 			fmt.Println("loading prayer sprite:", err)
 			return
@@ -65,7 +65,7 @@ func main() {
 		}
 
 	case 1:
-		img, err = sdl.LoadBMP("SPRITES/BG2.bmp")
+		img, err = sdl.LoadBMP("SPRITES/CenterFinder.bmp")
 		if err != nil {
 			fmt.Println("loading prayer sprite:", err)
 			return
@@ -106,12 +106,12 @@ func main() {
 		renderer.Clear()
 
 		renderer.Copy(playertex,
-			&sdl.Rect{X: 0, Y: 0, W: 960, H: 560},
-			&sdl.Rect{X: 0, Y: 0, W: 960, H: 560})
+			&sdl.Rect{X: 0, Y: 0, W: 1280, H: 720},
+			&sdl.Rect{X: 0, Y: 0, W: 1280, H: 720})
 
 		renderer.Copy(playerchar,
 			&sdl.Rect{X: 0, Y: 0, W: 64, H: 64},
-			&sdl.Rect{X: 360, Y: 640, W: 64, H: 64})
+			&sdl.Rect{X: 640, Y: 360, W: 64, H: 64})
 
 		renderer.Present()
 
