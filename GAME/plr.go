@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -17,8 +18,9 @@ var jump int
 var gravCount int
 
 const (
-	playerSpeed = 0.7
+	playerSpeed = 1.5
 	playerSize  = 64
+	Cooldown    = time.Millisecond * 1000
 )
 
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
@@ -44,8 +46,8 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 	//y := playerSize / 2.0
 
 	renderer.Copy(p.Tex,
-		&sdl.Rect{X: 0, Y: 0, W: 32, H: 32},
-		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 32, H: 32})
+		&sdl.Rect{X: 0, Y: 0, W: 21, H: 31},
+		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 42, H: 62})
 }
 func (p *player) Update() {
 	keys := sdl.GetKeyboardState()
