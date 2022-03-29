@@ -12,9 +12,9 @@ const (
 )
 
 func checkCollision(p *player, b *object) {
-	if p.y+(p.playerHeight*2) == b.y {
-		if p.x <= b.objectWidth+(b.x) && p.x >= b.x-(b.objectWidth) {
-			p.y -= gravity
+	if p.y+float64(p.playerHeight*2) == float64(b.y) {
+		if p.x <= float64(b.objectWidth+(b.x)) && p.x >= float64(b.x-(b.objectWidth)) {
+			p.y -= float64(gravity)
 		}
 	}
 

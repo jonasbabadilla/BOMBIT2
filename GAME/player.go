@@ -2,16 +2,16 @@ package main
 
 import (
 	"fmt"
-	"time"
+	//"time"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
 
 type player struct {
 	Tex                       *sdl.Texture
-	x, y                      int
+	x, y                      float64
 	playerWidth, playerHeight int
-	LastPress                 time.Time
+	//LastPress                 time.Time
 }
 
 var gravity = 1
@@ -19,10 +19,9 @@ var jump int
 var gravCount int
 
 const (
-	playerSpeedX = 2
-	playerSpeedY = 30
-	playerSize   = 64
-	CoolDown     = time.Millisecond * 500
+	playerSpeedX = 1.00
+	playerSpeedY = 5.00
+	//CoolDown     = time.Millisecond * 5000
 )
 
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
@@ -50,8 +49,9 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 	//y := playerSize / 2.0
 
 	renderer.Copy(p.Tex,
-		&sdl.Rect{X: 0, Y: 0, W: 21, H: 31},
-		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 42, H: 62})
+		nil,
+		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 42, H: 62},
+	)
 }
 func (p *player) Update() {
 	keys := sdl.GetKeyboardState()
@@ -62,15 +62,14 @@ func (p *player) Update() {
 	}
 
 	if keys[sdl.SCANCODE_UP] == 1 {
-		if time.Since(p.LastPress) > CoolDown {
+		/*p.LastPress = time.Now()
+		if time.Since(p.LastPress) < CoolDown {
 			p.y -= (playerSpeedY)
-			p.LastPress = time.Now()
-			sdl.Delay(500)
+			sdl.Delay(1000)
 		} else {
 			p.y += (playerSpeedY)
-		}
-
-		p.y += gravity
-		sdl.Delay(1000 / 60)
+		}*/
 	}
+	p.y += float64(gravity)
+	sdl.Delay(1000 / 60)
 }
