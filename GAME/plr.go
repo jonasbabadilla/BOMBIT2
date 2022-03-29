@@ -59,12 +59,12 @@ func (p *player) Update() {
 	}
 
 	if keys[sdl.SCANCODE_UP] == 1 {
+		tempY := p.y
+		fmt.Println(tempY)
 		if time.Since(p.LastPress) > CoolDown {
 			p.y -= (playerSpeedY)
 			p.LastPress = time.Now()
-			sdl.Delay(500)
-		} else {
-			p.y += (playerSpeedY)
+
 		}
 
 	}
