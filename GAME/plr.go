@@ -11,7 +11,10 @@ type player struct {
 	x, y float64
 }
 
-const playerSpeed = 0.75
+const (
+	playerSpeed = 0.75
+	playerSize  = 64
+)
 
 func newPlayer(renderer *sdl.Renderer) (p player, e error) {
 
@@ -25,14 +28,16 @@ func newPlayer(renderer *sdl.Renderer) (p player, e error) {
 		return player{}, fmt.Errorf("loading player texture: %v", err)
 	}
 
-	p.x = 0.0
-	p.y = 680
+	p.x = 640 /// 2.0
+	p.y = 360 //- playerSize/2.0
 
 	return p, nil
 }
 
 func (p *player) Draw(renderer *sdl.Renderer) {
-	// x: 3 y: 375
+	//x := playerSize / 2.0
+	//y := playerSize / 2.0
+
 	renderer.Copy(p.Tex,
 		&sdl.Rect{X: 0, Y: 0, W: 32, H: 32},
 		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 32, H: 32})
@@ -46,8 +51,6 @@ func (p *player) Update() {
 		p.x -= playerSpeed
 	} else if keys[sdl.SCANCODE_RIGHT] == 1 {
 		p.x += playerSpeed
-	} else if keys[sdl.SCANCODE_LEFT] == 1 && keys[sdl.SCANCODE_RIGHT] == 1 {
-		p.x += 0
 	}
 
 }
