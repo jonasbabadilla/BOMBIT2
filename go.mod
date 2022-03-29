@@ -1,4 +1,4 @@
-module sdl
+module github.com/jonasbabadilla/SDLGAME
 
 go 1.18
 
