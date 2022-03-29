@@ -11,8 +11,14 @@ type player struct {
 	x, y float64
 }
 
+var gravCount = 0
+
 const (
+<<<<<<< HEAD
 	playerSpeed = 1.5
+=======
+	playerSpeed = 0.2
+>>>>>>> 6d822491bdb28ee250669dcc40326e60b0a9da51
 	playerSize  = 64
 )
 
@@ -50,4 +56,12 @@ func (p *player) Update() {
 		p.x += playerSpeed
 	}
 
+	var jump = keys[sdl.SCANCODE_UP]
+
+	if jump == 1 {
+		for gravCount := 0; gravCount < 10; {
+			p.y -= (playerSpeed / (p.y / 1.5))
+			gravCount++
+		}
+	}
 }
