@@ -8,12 +8,13 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-var ScreenWidth int32
-var ScreenHeight int32
-
 func main() {
 
-	StoryGame.Resolution = StoryGame.Dimensions{1280, 720}
+	var ScreenWidth = int32(1280)
+	var ScreenHeight = int32(720)
+
+	StoryGame.Width = ScreenWidth
+	StoryGame.Height = ScreenHeight
 
 	if err := sdl.Init(uint32(sdl.INIT_EVERYTHING)); err != nil {
 		fmt.Println("initializing sdl:", err)

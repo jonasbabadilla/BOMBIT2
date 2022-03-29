@@ -11,12 +11,8 @@ type player struct {
 	x, y float64
 }
 
-type Dimensions struct {
-	ScreenWidth  int32
-	ScreenHeight int32
-}
-
-var Resolution Dimensions
+var Width int32
+var Height int32
 
 const (
 	playerSpeed = 0.75
@@ -34,8 +30,8 @@ func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 	if err != nil {
 		return player{}, fmt.Errorf("loading player texture: %v", err)
 	}
-	p.x = float64(Resolution.ScreenWidth)/2.0 - playerSize/2.0
-	p.y = float64(Resolution.ScreenHeight)/2.0 - playerSize/2.0
+	p.x = float64(Width)/2.0 - playerSize/2.0
+	p.y = float64(Height)/2.0 - playerSize/2.0
 	return p, nil
 }
 
