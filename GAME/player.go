@@ -2,30 +2,28 @@ package main
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
 
 type player struct {
-	Tex  *sdl.Texture
-	x, y float64
+	Tex          *sdl.Texture
+	x, y         int
+	playerWidth  int
+	playerHeight int
 }
 
-var gravity = 1.00
-
-var jump int
-var gravCount int
+var gravity = 1
 
 const (
-	playerSpeed = 1.5
-	playerSize  = 64
-	Cooldown    = time.Millisecond * 1000
+	playerSpeed = 2
 )
 
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 
 	char, err := sdl.LoadBMP("SPRITES/playerSprite.bmp")
+	p.playerWidth = char.Bounds().Dx()
+	p.playerHeight = char.Bounds().Dy()
 	if err != nil {
 		return player{}, fmt.Errorf("loading player sprite: %v", err)
 	}
@@ -61,6 +59,6 @@ func (p *player) Update() {
 		p.y -= (playerSpeed + gravity)
 	}
 
-	p.y += gravity * 1.1
+	p.y += gravity
 	sdl.Delay(1000 / 60)
 }
