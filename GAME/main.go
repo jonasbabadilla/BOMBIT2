@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	screenHeight = 720
 	screenWidth  = 1280
+	screenHeight = 720
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
 		return
 	}
 
-	char, err := sdl.LoadBMP("SPRITES/CHAR.bmp")
+	char, err := sdl.LoadBMP("SPRITES/playerSprite.bmp")
 	if err != nil {
 		fmt.Println("loading texture:", err)
 		return
@@ -67,9 +67,8 @@ func main() {
 		renderer.Clear()
 
 		renderer.Copy(playerchar,
-			&sdl.Rect{X: 0, Y: 0, W: 64, H: 64},
-			&sdl.Rect{X: 640, Y: 360, W: 64, H: 64})
-
+			&sdl.Rect{X: 0, Y: 0, W: 21, H: 31},
+			&sdl.Rect{X: 150, Y: 375, W: 42, H: 62})
 		renderer.Present()
 
 	}
