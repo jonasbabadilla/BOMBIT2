@@ -57,7 +57,6 @@ func (p *player) Update() {
 	if keys[sdl.SCANCODE_LEFT] == 1 {
 		p.x -= playerSpeed
 	} else if keys[sdl.SCANCODE_RIGHT] == 1 {
-
 		p.x += playerSpeed
 	}
 
