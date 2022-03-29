@@ -12,7 +12,7 @@ type player struct {
 }
 
 const (
-	playerSpeed = 0.75
+	playerSpeed = 1.5
 	playerSize  = 64
 )
 
@@ -39,8 +39,8 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 	//y := playerSize / 2.0
 
 	renderer.Copy(p.Tex,
-		&sdl.Rect{X: 0, Y: 0, W: 32, H: 32},
-		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 32, H: 32})
+		&sdl.Rect{X: 0, Y: 0, W: 21, H: 31},
+		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 42, H: 62})
 }
 func (p *player) Update() {
 	keys := sdl.GetKeyboardState()

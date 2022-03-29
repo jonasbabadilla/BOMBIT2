@@ -7,9 +7,10 @@ import (
 )
 
 type object struct {
-	Tex   *sdl.Texture
-	x, y  float64
-	angle float64
+	Tex    *sdl.Texture
+	x, y   float64
+	angle  float64
+	active bool
 }
 
 const (
@@ -30,7 +31,7 @@ func NewObject(renderer *sdl.Renderer) (o object, err error) {
 	o.angle = 270 * (math.Pi / 180)
 	o.x = 200
 	o.y = 400
-
+	o.active = true
 	return o, nil
 }
 
@@ -43,7 +44,7 @@ func (o object) Draw(renderer *sdl.Renderer) {
 }
 
 func (o object) Update() {
-	// trying to get it to move left and right, rn trying to just make it move in one direction lol
-	o.y += objectSpeed * math.Sin(o.angle)
-
+	if o.active == true {
+		o.y += objectSpeed * math.Sin(o.angle)
+	}
 }
