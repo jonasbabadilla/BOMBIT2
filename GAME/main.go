@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	screenWidth  = 1280
-	screenHeight = 720
+	ScreenWidth  = 1280
+	ScreenHeight = 720
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 	window, err := sdl.CreateWindow(
 		"GAMING WITH SDL",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
-		screenWidth, screenHeight,
+		ScreenWidth, ScreenHeight,
 		sdl.WINDOW_OPENGL)
 
 	if err != nil {

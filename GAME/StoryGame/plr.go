@@ -1,8 +1,9 @@
-package main
+package StoryGame
 
 import (
 	"fmt"
 
+	main "github.com/jonasbabadilla/SDLGAME/GAME"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -28,8 +29,8 @@ func newPlayer(renderer *sdl.Renderer) (p player, e error) {
 		return player{}, fmt.Errorf("loading player texture: %v", err)
 	}
 
-	p.x = screenWidth/2.0 - playerSize
-	p.y = screenHeight/2.0 - playerSize/2.0
+	p.x = main.ScreenWidth/2.0 - playerSize
+	p.y = main.ScreenHeight/2.0 - playerSize/2.0
 	return p, nil
 }
 
