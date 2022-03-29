@@ -18,7 +18,7 @@ const (
 	objectHeight = 16
 )
 
-func newObject(renderer *sdl.Renderer) (o object, err error) {
+func NewObject(renderer *sdl.Renderer) (o object, err error) {
 
 	object, err := sdl.LoadBMP("SPRITES/BAR.bmp")
 	if err != nil {

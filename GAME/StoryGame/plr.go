@@ -3,7 +3,6 @@ package StoryGame
 import (
 	"fmt"
 
-	main "github.com/jonasbabadilla/SDLGAME/GAME"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -12,12 +11,19 @@ type player struct {
 	x, y float64
 }
 
+type Dimensions struct {
+	ScreenWidth  int32
+	ScreenHeight int32
+}
+
+var Resolution Dimensions
+
 const (
 	playerSpeed = 0.75
 	playerSize  = 64
 )
 
-func newPlayer(renderer *sdl.Renderer) (p player, e error) {
+func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 
 	char, err := sdl.LoadBMP("SPRITES/playerSprite.bmp")
 	if err != nil {
@@ -28,9 +34,8 @@ func newPlayer(renderer *sdl.Renderer) (p player, e error) {
 	if err != nil {
 		return player{}, fmt.Errorf("loading player texture: %v", err)
 	}
-
-	p.x = main.ScreenWidth/2.0 - playerSize
-	p.y = main.ScreenHeight/2.0 - playerSize/2.0
+	p.x = float64(Resolution.ScreenWidth)/2.0 - playerSize/2.0
+	p.y = float64(Resolution.ScreenHeight)/2.0 - playerSize/2.0
 	return p, nil
 }
 

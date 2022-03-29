@@ -1,4 +1,4 @@
-module github.com/jonasbabadilla/SDLGAME
+module chaseGame
 
 go 1.18
 
