@@ -37,19 +37,29 @@ func main() {
 	}
 
 	defer renderer.Destroy()
+	/*
+		char, err := sdl.LoadBMP("SPRITES/playerSprite.bmp")
+		if err != nil {
+			fmt.Println("loading texture:", err)
+			return
+		}
 
-	char, err := sdl.LoadBMP("SPRITES/playerSprite.bmp")
+		defer char.Free()
+
+		playerchar, err := renderer.CreateTextureFromSurface(char)
+		if err != nil {
+			fmt.Println("loading texture:", err)
+			return
+		}
+
+		defer playerchar.Destroy()
+	*/
+
+	plr, err := newPlayer(renderer)
 	if err != nil {
-		fmt.Println("loading texture:", err)
+		fmt.Println("creating player:", err)
 		return
 	}
-
-	playerchar, err := renderer.CreateTextureFromSurface(char)
-	if err != nil {
-		fmt.Println("loading texture:", err)
-		return
-	}
-
 	for {
 
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
@@ -62,9 +72,13 @@ func main() {
 		renderer.SetDrawColor(119, 23, 23, 0) // color value = white at the moment
 		renderer.Clear()
 
-		renderer.Copy(playerchar,
-			&sdl.Rect{X: 0, Y: 0, W: 21, H: 31},
-			&sdl.Rect{X: 150, Y: 375, W: 42, H: 62})
+		/*
+			renderer.Copy(playerchar,
+				&sdl.Rect{X: 0, Y: 0, W: 21, H: 31},
+				&sdl.Rect{X: 150, Y: 375, W: 42, H: 62})
+		*/
+		plr.Draw(renderer)
+		plr.Update()
 		renderer.Present()
 
 	}
