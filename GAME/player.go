@@ -9,17 +9,17 @@ import (
 
 type player struct {
 	Tex                       *sdl.Texture
-	x, y                      float64
+	x, y                      int
 	playerWidth, playerHeight int
 	LastPress                 time.Time
 }
 
-var gravity = 1.00
+var gravity = 1
 var jump int
 var gravCount int
 
 const (
-	playerSpeedX = 1.5
+	playerSpeedX = 2
 	playerSpeedY = 30
 	playerSize   = 64
 	CoolDown     = time.Millisecond * 500
