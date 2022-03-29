@@ -83,6 +83,17 @@ func main() {
 		return
 	}
 
+	char, err := sdl.LoadBMP("SPRITES/CHAR.bmp")
+	if err != nil {
+		fmt.Println("loading texture:", err)
+		return
+	}
+	playerchar, err := renderer.CreateTextureFromSurface(char)
+	if err != nil {
+		fmt.Println("loading texture:", err)
+		return
+	}
+
 	for {
 
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
@@ -97,6 +108,10 @@ func main() {
 		renderer.Copy(playertex,
 			&sdl.Rect{X: 0, Y: 0, W: 960, H: 560},
 			&sdl.Rect{X: 0, Y: 0, W: 960, H: 560})
+
+		renderer.Copy(playerchar,
+			&sdl.Rect{X: 0, Y: 0, W: 64, H: 64},
+			&sdl.Rect{X: 360, Y: 640, W: 64, H: 64})
 
 		renderer.Present()
 
