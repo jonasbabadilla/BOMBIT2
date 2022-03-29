@@ -18,6 +18,8 @@ var JumpTimer int
 var gravity = 1
 var JumpState bool
 
+var charDirection sdl.RendererFlip
+
 const (
 	playerSpeedX = 1.00
 	playerSpeedY = 5.00
@@ -48,17 +50,24 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 	//x := playerSize / 2.0
 	//y := playerSize / 2.0
 
-	renderer.Copy(p.Tex,
+	renderer.CopyEx(p.Tex,
 		nil,
 		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 42, H: 62},
+		0.0,
+		&sdl.Point{X: 10, Y: 0},
+		charDirection,
 	)
 }
+
 func (p *player) Update() {
 	keys := sdl.GetKeyboardState()
 	if keys[sdl.SCANCODE_LEFT] == 1 {
 		p.x -= playerSpeedX
+		charDirection = sdl.FLIP_HORIZONTAL
+
 	} else if keys[sdl.SCANCODE_RIGHT] == 1 {
 		p.x += playerSpeedX
+		charDirection = sdl.FLIP_NONE
 	}
 
 	if keys[sdl.SCANCODE_UP] == 1 && JumpState != true {
