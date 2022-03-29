@@ -43,6 +43,9 @@ func main() {
 		fmt.Println("creating player:", err)
 		return
 	}
+
+	bar, err := newObject(renderer)
+
 	for {
 
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
@@ -57,6 +60,9 @@ func main() {
 
 		plr.Draw(renderer)
 		plr.Update()
+
+		bar.Draw(renderer)
+		bar.Update()
 		renderer.Present()
 
 	}
