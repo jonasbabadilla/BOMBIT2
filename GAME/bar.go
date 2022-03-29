@@ -1,14 +1,15 @@
 package main
 
 import (
-	"fmt"
+	"math"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
 
 type object struct {
-	Tex  *sdl.Texture
-	x, y float64
+	Tex   *sdl.Texture
+	x, y  float64
+	angle float64
 }
 
 const (
@@ -17,45 +18,32 @@ const (
 	objectHeight = 16
 )
 
-/*
-func newBar(renderer *sdl.Renderer) (o object) {
-	o.Tex = renderer.CreateTextureFromSurface(renderer, "SPRITES/BAR.bmp")
-	return o
-}
-*/
-
-func newObject(renderer *sdl.Renderer) (o object, e error) {
+func newObject(renderer *sdl.Renderer) (o object, err error) {
 
 	object, err := sdl.LoadBMP("SPRITES/BAR.bmp")
 	if err != nil {
-		return o, fmt.Errorf("loading object sprite: %v", err)
+		return
 	}
 	defer object.Free()
 	o.Tex, err = renderer.CreateTextureFromSurface(object)
-	if err != nil {
-		return o, fmt.Errorf("loading object texture: %v", err)
-	}
 
+	o.angle = 270 * (math.Pi / 180)
 	o.x = 200
-	o.y = 200
+	o.y = 400
+
 	return o, nil
 }
 
 func (o object) Draw(renderer *sdl.Renderer) {
 
 	renderer.Copy(o.Tex,
-		&sdl.Rect{X: 0, Y: 0, W: 128, H: 16},
-		&sdl.Rect{X: int32(o.x), Y: int32(o.y), W: 128, H: 16})
+		&sdl.Rect{X: 0, Y: 0, W: objectWidth, H: objectHeight},
+		&sdl.Rect{X: int32(o.x), Y: int32(o.y), W: objectWidth, H: objectHeight})
 
 }
 
 func (o object) Update() {
+	// trying to get it to move left and right, rn trying to just make it move in one direction lol
+	o.y += objectSpeed * math.Sin(o.angle)
 
-	for i := 0; i < 25; i++ {
-		o.x -= objectSpeed
-	}
-
-	for i := 0; i < 25; i++ {
-		o.x += objectSpeed
-	}
 }

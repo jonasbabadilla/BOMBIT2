@@ -63,6 +63,7 @@ func main() {
 
 		bar.Draw(renderer)
 		bar.Update()
+
 		renderer.Present()
 
 	}
