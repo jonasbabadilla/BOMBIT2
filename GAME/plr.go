@@ -8,19 +8,20 @@ import (
 )
 
 type player struct {
-	Tex  *sdl.Texture
-	x, y float64
+	Tex       *sdl.Texture
+	x, y      float64
+	LastPress time.Time
 }
 
 var gravity = 1.00
-
 var jump int
 var gravCount int
 
 const (
-	playerSpeed = 1.5
-	playerSize  = 64
-	Cooldown    = time.Millisecond * 1000
+	playerSpeedX = 1.5
+	playerSpeedY = 30
+	playerSize   = 64
+	CoolDown     = time.Millisecond * 500
 )
 
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
@@ -52,15 +53,19 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 func (p *player) Update() {
 	keys := sdl.GetKeyboardState()
 	if keys[sdl.SCANCODE_LEFT] == 1 {
-		p.x -= playerSpeed
+		p.x -= playerSpeedX
 	} else if keys[sdl.SCANCODE_RIGHT] == 1 {
-		p.x += playerSpeed
+		p.x += playerSpeedX
 	}
 
 	if keys[sdl.SCANCODE_UP] == 1 {
-		p.y -= (playerSpeed + gravity)
-	}
+		if time.Since(p.LastPress) > CoolDown {
+			p.y -= (playerSpeedY)
+			p.LastPress = time.Now()
+			sdl.Delay(500)
+		} else {
+			p.y += (playerSpeedY)
+		}
 
-	p.y += gravity * 1.1
-	sdl.Delay(1000 / 60)
+	}
 }
