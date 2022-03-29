@@ -8,17 +8,18 @@ import (
 )
 
 type player struct {
-	Tex       *sdl.Texture
-	x, y      float64
-	LastPress time.Time
+	Tex                       *sdl.Texture
+	x, y                      int
+	playerWidth, playerHeight int
+	LastPress                 time.Time
 }
 
-var gravity = 1.00
+var gravity = 1
 var jump int
 var gravCount int
 
 const (
-	playerSpeedX = 1.5
+	playerSpeedX = 2
 	playerSpeedY = 30
 	playerSize   = 64
 	CoolDown     = time.Millisecond * 500
@@ -27,6 +28,8 @@ const (
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 
 	char, err := sdl.LoadBMP("SPRITES/playerSprite.bmp")
+	p.playerWidth = char.Bounds().Dx()
+	p.playerHeight = char.Bounds().Dy()
 	if err != nil {
 		return player{}, fmt.Errorf("loading player sprite: %v", err)
 	}
@@ -67,5 +70,7 @@ func (p *player) Update() {
 
 		}
 
+		p.y += gravity
+		sdl.Delay(1000 / 60)
 	}
 }

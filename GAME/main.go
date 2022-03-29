@@ -11,6 +11,15 @@ const (
 	screenHeight = 720
 )
 
+func checkCollision(p *player, b *object) {
+	if p.y+(p.playerHeight*2) == b.y {
+		if p.x <= b.objectWidth+(b.x) && p.x >= b.x-(b.objectWidth) {
+			p.y -= gravity
+		}
+	}
+
+}
+
 func main() {
 	if err := sdl.Init(uint32(sdl.INIT_EVERYTHING)); err != nil {
 		fmt.Println("initializing sdl:", err)
@@ -54,6 +63,7 @@ func main() {
 		bar.Update()
 
 		renderer.Present()
+		checkCollision(&plr, &bar)
 
 	}
 }
