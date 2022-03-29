@@ -111,7 +111,7 @@ func main() {
 
 		renderer.Copy(playerchar,
 			&sdl.Rect{X: 0, Y: 0, W: 64, H: 64},
-			&sdl.Rect{X: 360, Y: 640, W: 64, H: 64})
+			&sdl.Rect{X: 640, Y: 360, W: 64, H: 64})
 
 		renderer.Present()
 
