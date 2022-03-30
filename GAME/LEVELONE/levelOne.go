@@ -20,7 +20,7 @@ var PlayerStart map[string]int
 
 func NewObject(renderer *sdl.Renderer) (objectData []Object, err error) {
 
-	Surf, _ := sdl.LoadBMP("SPRITES/LEVELONE/levelOneLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELONE/levelOneLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	PlayerStart = make(map[string]int, 2)
@@ -52,7 +52,7 @@ func NewObject(renderer *sdl.Renderer) (objectData []Object, err error) {
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("SPRITES/LEVELONE/BG.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELONE/BG.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{
