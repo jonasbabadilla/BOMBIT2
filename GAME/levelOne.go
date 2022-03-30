@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -32,7 +30,6 @@ func NewObject(renderer *sdl.Renderer) (objectData []object, err error) {
 		objectHeight: Surf.Bounds().Dy(),
 	}
 	objectData = append(objectData, o)
-	fmt.Print(objectData)
 	defer Surf.Free()
 
 	Surf, _ = sdl.LoadBMP("SPRITES/LEVELONE/BG.bmp")
