@@ -15,11 +15,15 @@ var pChar player
 var levelObject object
 
 func checkCollision() {
-	if pChar.y+float64(pChar.playerHeight*2) == float64(levelObject.y) {
-		if pChar.x <= float64(levelObject.objectWidth+(levelObject.x)) && pChar.x >= float64(levelObject.x-(levelObject.objectWidth)) {
+	//Check if player is on same Y level
+	if pChar.y+float64(pChar.playerHeight*2) >= float64(levelObject.y) {
+
+		if pChar.x >= float64(levelObject.x) && pChar.x <= float64(levelObject.x+levelObject.objectWidth) {
 			pChar.y -= float64(gravity)
 			JumpState = false
 			JumpTimer = 0
+			PlayerSpeedY = 7.00
+			gravity = 1.00
 		}
 	}
 

@@ -15,16 +15,13 @@ type player struct {
 
 var JumpTimer int
 
-var gravity = 1
+var gravity = 5.00
 var JumpState bool
 
 var charDirection sdl.RendererFlip
 
-const (
-	playerSpeedX = 1.00
-	playerSpeedY = 5.00
-	//CoolDown     = time.Millisecond * 5000
-)
+var PlayerSpeedX = 3.00
+var PlayerSpeedY = 7.00
 
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 
@@ -62,11 +59,11 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 func (p *player) Update() {
 	keys := sdl.GetKeyboardState()
 	if keys[sdl.SCANCODE_LEFT] == 1 {
-		p.x -= playerSpeedX
+		p.x -= PlayerSpeedX
 		charDirection = sdl.FLIP_HORIZONTAL
 
 	} else if keys[sdl.SCANCODE_RIGHT] == 1 {
-		p.x += playerSpeedX
+		p.x += PlayerSpeedX
 		charDirection = sdl.FLIP_NONE
 	}
 
@@ -76,15 +73,20 @@ func (p *player) Update() {
 
 	p.CalcJump()
 	p.y += float64(gravity)
-	sdl.Delay(1000 / 60)
+	sdl.Delay(10)
 }
 
 func (p *player) CalcJump() {
 	if JumpState {
-		p.y -= playerSpeedY
 		JumpTimer++
+		p.y -= PlayerSpeedY
 		if JumpTimer >= 20 {
-			p.y += playerSpeedY + float64(gravity)
+			PlayerSpeedY *= 0.90
+		}
+		if JumpTimer >= 45 {
+			if gravity < 5 {
+				gravity *= 1.1
+			}
 		}
 	}
 	checkCollision()
