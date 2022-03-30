@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	levelOne "chaseGame/GAME/SPRITES/LEVELONE"
+	levelOne "chaseGame/GAME/LEVELONE"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
