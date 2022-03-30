@@ -1,3 +1,3 @@
-# BOMBIT2
+# STORY GAME (Temp Title)
 
-A Bomb It style game using SDL Library by Victor Wut and Jonas Babadilla
+A Story-driven puzzle platformer game using SDL Library by Victor Wut and Jonas Babadilla
