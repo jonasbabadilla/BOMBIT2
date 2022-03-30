@@ -16,7 +16,7 @@ var levelObject object
 
 func checkCollision() {
 	//Check if player is on same Y level
-	if pChar.y+float64(pChar.playerHeight*2) >= float64(levelObject.y) {
+	if pChar.y+float64(pChar.playerHeight*2) >= float64(levelObject.y) && pChar.y+float64(pChar.playerHeight*2) < float64(levelObject.y+levelObject.objectHeight) {
 
 		if pChar.x >= float64(levelObject.x) && pChar.x <= float64(levelObject.x+levelObject.objectWidth) {
 			pChar.y -= float64(gravity)

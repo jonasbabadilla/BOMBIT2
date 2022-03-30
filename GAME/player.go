@@ -83,7 +83,7 @@ func (p *player) CalcJump() {
 		if JumpTimer >= 20 {
 			PlayerSpeedY *= 0.90
 		}
-		if JumpTimer >= 45 {
+		if JumpTimer >= 37 {
 			if gravity < 5 {
 				gravity *= 1.1
 			}
