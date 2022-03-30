@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -10,8 +8,10 @@ type player struct {
 	Tex                       *sdl.Texture
 	x, y                      float64
 	playerWidth, playerHeight int
-	//LastPress                 time.Time
 }
+
+var CharFrameX int32
+var CharFrameY int32
 
 var JumpTimer int
 
@@ -25,21 +25,17 @@ var PlayerSpeedY = 7.00
 
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 
-	char, err := sdl.LoadBMP("SPRITES/playerSprite.bmp")
-	p.playerWidth = char.Bounds().Dx()
-	p.playerHeight = char.Bounds().Dy()
-	if err != nil {
-		return player{}, fmt.Errorf("loading player sprite: %v", err)
+	char, _ := sdl.LoadBMP("SPRITES/playerSprite.bmp")
+	Tex, _ := renderer.CreateTextureFromSurface(char)
+
+	p = player{
+		Tex:          Tex,
+		x:            96,
+		y:            430,
+		playerWidth:  16,
+		playerHeight: 16,
 	}
 	defer char.Free()
-	p.Tex, err = renderer.CreateTextureFromSurface(char)
-	if err != nil {
-		return player{}, fmt.Errorf("loading player texture: %v", err)
-	}
-
-	p.x = 640 /// 2.0
-	p.y = 360 //- playerSize/2.0
-
 	return p, nil
 }
 
@@ -48,10 +44,10 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 	//y := playerSize / 2.0
 
 	renderer.CopyEx(p.Tex,
-		&sdl.Rect{X: 0, Y: 0, W: 16, H: 16},
+		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
 		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 64, H: 64},
 		0.0,
-		&sdl.Point{X: 10, Y: 0},
+		&sdl.Point{},
 		charDirection,
 	)
 }
@@ -69,6 +65,7 @@ func (p *player) Update() {
 
 	if keys[sdl.SCANCODE_UP] == 1 && JumpState != true {
 		JumpState = true
+		gravity = 1.00
 	}
 
 	p.CalcJump()

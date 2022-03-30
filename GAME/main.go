@@ -18,16 +18,20 @@ var levelObject []object
 func checkCollision() {
 	//Check if player is on same Y level
 	for i := range levelObject {
-		if pChar.y+float64(pChar.playerHeight*2) >= float64(levelObject[i].y) && pChar.y+float64(pChar.playerHeight*2) < float64(levelObject[i].y+levelObject[i].objectHeight) {
+		if pChar.y+float64(pChar.playerHeight*4) >= float64(levelObject[i].y) && pChar.y+float64(pChar.playerHeight*4) < float64(levelObject[i].y+(levelObject[i].objectHeight/2)) {
 
-			if pChar.x >= float64(levelObject[i].x) && pChar.x <= float64(levelObject[i].x+levelObject[i].objectWidth) {
+			if pChar.x >= float64(levelObject[i].x-16) && pChar.x <= float64(levelObject[i].x+levelObject[i].objectWidth-16) {
 				pChar.y -= float64(gravity)
 				JumpState = false
 				JumpTimer = 0
 				PlayerSpeedY = 7.00
-				gravity = 1.00
+				gravity = 5.00
 			}
 		}
+	}
+	if pChar.y+float64(pChar.playerHeight*4) >= screenHeight {
+		pChar.x = float64(PlayerStart["X"])
+		pChar.y = float64(PlayerStart["Y"])
 	}
 
 }
