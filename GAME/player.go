@@ -48,8 +48,8 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 	//y := playerSize / 2.0
 
 	renderer.CopyEx(p.Tex,
-		nil,
-		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 42, H: 62},
+		&sdl.Rect{X: 0, Y: 0, W: 16, H: 16},
+		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 64, H: 64},
 		0.0,
 		&sdl.Point{X: 10, Y: 0},
 		charDirection,

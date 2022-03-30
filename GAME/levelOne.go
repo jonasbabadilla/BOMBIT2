@@ -21,7 +21,6 @@ func NewObject(renderer *sdl.Renderer) (objectData []object, err error) {
 
 	Surf, _ := sdl.LoadBMP("SPRITES/LEVELONE/1.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
-	tempObj, _ = renderer.CreateTextureFromSurface(Surf)
 	o := object{
 		Tex:          Tex,
 		x:            600,
