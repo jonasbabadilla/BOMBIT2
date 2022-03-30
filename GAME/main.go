@@ -12,18 +12,21 @@ const (
 )
 
 var pChar player
-var levelObject object
+var levelOne object
+var levelObject []object
 
 func checkCollision() {
 	//Check if player is on same Y level
-	if pChar.y+float64(pChar.playerHeight*2) >= float64(levelObject.y) && pChar.y+float64(pChar.playerHeight*2) < float64(levelObject.y+levelObject.objectHeight) {
+	for i := range levelObject {
+		if pChar.y+float64(pChar.playerHeight*2) >= float64(levelObject[i].y) && pChar.y+float64(pChar.playerHeight*2) < float64(levelObject[i].y+levelObject[i].objectHeight) {
 
-		if pChar.x >= float64(levelObject.x) && pChar.x <= float64(levelObject.x+levelObject.objectWidth) {
-			pChar.y -= float64(gravity)
-			JumpState = false
-			JumpTimer = 0
-			PlayerSpeedY = 7.00
-			gravity = 1.00
+			if pChar.x >= float64(levelObject[i].x) && pChar.x <= float64(levelObject[i].x+levelObject[i].objectWidth) {
+				pChar.y -= float64(gravity)
+				JumpState = false
+				JumpTimer = 0
+				PlayerSpeedY = 7.00
+				gravity = 1.00
+			}
 		}
 	}
 
@@ -56,6 +59,7 @@ func main() {
 		return
 	}
 	levelObject, err = NewObject(renderer)
+
 	for {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 			switch event.(type) {
@@ -68,10 +72,11 @@ func main() {
 		pChar.Draw(renderer)
 		pChar.Update()
 
-		levelObject.Draw(renderer)
-		levelObject.Update()
+		levelOne.Draw(renderer)
+		levelOne.Update()
 
 		renderer.Present()
+		sdl.Delay(100)
 		checkCollision()
 
 	}
