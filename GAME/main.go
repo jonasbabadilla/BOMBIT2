@@ -67,16 +67,17 @@ func main() {
 				return
 			}
 		}
-		renderer.SetDrawColor(119, 23, 23, 0)
+		renderer.SetDrawColor(144, 144, 144, 0)
 		renderer.Clear()
+
+		levelOne.Draw(renderer, levelObject)
+		levelOne.Update()
+
 		pChar.Draw(renderer)
 		pChar.Update()
 
-		levelOne.Draw(renderer)
-		levelOne.Update()
-
 		renderer.Present()
-		sdl.Delay(100)
+
 		checkCollision()
 
 	}
