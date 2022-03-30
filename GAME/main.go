@@ -15,7 +15,6 @@ const (
 
 var pChar player
 var levelObject []levelOne.Object
-var levelCall levelOne.Object
 
 func checkCollision() {
 	//Check if player is on same Y level
@@ -76,8 +75,8 @@ func main() {
 		renderer.SetDrawColor(144, 144, 144, 0)
 		renderer.Clear()
 
-		levelCall.Draw(renderer, levelObject)
-		levelCall.Update()
+		levelObject[0].Draw(renderer, levelObject)
+		levelObject[0].Update()
 
 		pChar.Draw(renderer)
 		pChar.Update()
