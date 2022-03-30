@@ -1,23 +1,3 @@
-https://github.com/veandco/go-sdl2/#installation
-
-This is the package we're using
-
-However go get _____ isn't enough. You'll need to actually install it into your directory.
-
-The link should lead you to the installation selection and there you'll get some direction
-
-If it doesn't, just scroll past the files/folders and you'll find "Table Of Contents"
-
-You'll find the installation section there
-
-Also
-
-main.go isn't done yet so don't worry about running it right now. UPATE: main.go DOES WORK, however its just an empty white tab (which is what was planned)
-
-
-k - Victor
-
-
 PLAN
 
 
@@ -42,3 +22,12 @@ EACH FIVE LEVELS AFTER ARE MESSED UP/CORRUPTED VERSIONS OF FIRST FIVE. CORRUPTIN
 - ARROW KEYS
 
 - ONE ENDING (SUBJECT TO CHANGE)
+
+
+PROGRAMMING
+
+- LEVELS WILL BE DESIGNED WITH TWO BMPS
+ -> ONE BMP IS SOLELY THE BORDERS OF PLATFORMS
+ -> THE OTHER IS FOR VISUALS
+ 
+- IN THE GO FILES FOR EACH LEVEL, USE AN ARRAY TO STORE EACH PLATFORM'S INFORMATION
