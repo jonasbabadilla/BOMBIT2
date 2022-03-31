@@ -23,6 +23,8 @@ var charDirection sdl.RendererFlip
 var PlayerSpeedX = 3.00
 var PlayerSpeedY = 7.00
 
+var Keys = sdl.GetKeyboardState()
+
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 
 	char, _ := sdl.LoadBMP("CharSprites/playerSprite.bmp")
@@ -53,17 +55,17 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 }
 
 func (p *player) Update() {
-	keys := sdl.GetKeyboardState()
-	if keys[sdl.SCANCODE_LEFT] == 1 {
+	Keys = sdl.GetKeyboardState()
+	if Keys[sdl.SCANCODE_LEFT] == 1 {
 		p.x -= PlayerSpeedX
 		charDirection = sdl.FLIP_HORIZONTAL
 
-	} else if keys[sdl.SCANCODE_RIGHT] == 1 {
+	} else if Keys[sdl.SCANCODE_RIGHT] == 1 {
 		p.x += PlayerSpeedX
 		charDirection = sdl.FLIP_NONE
 	}
 
-	if keys[sdl.SCANCODE_UP] == 1 && JumpState != true {
+	if Keys[sdl.SCANCODE_UP] == 1 && JumpState != true {
 		JumpState = true
 		gravity = 1.00
 	}
