@@ -1,7 +1,7 @@
 package main
 
 import (
-	levels "chaseGame/GAME/LEVELONE"
+	levels "chaseGame/GAME/LEVELS"
 )
 
 var currentLvl = 1

@@ -25,7 +25,7 @@ var PlayerSpeedY = 7.00
 
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 
-	char, _ := sdl.LoadBMP("SPRITES/playerSprite.bmp")
+	char, _ := sdl.LoadBMP("CharSprites/playerSprite.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(char)
 
 	p = player{
