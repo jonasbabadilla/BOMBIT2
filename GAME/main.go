@@ -8,6 +8,8 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
+var Renderer *sdl.Renderer
+
 const (
 	screenWidth  = 1280
 	screenHeight = 720
@@ -53,13 +55,13 @@ func main() {
 		return
 	}
 	defer window.Destroy()
-	renderer, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
+	Renderer, err = sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
 	if err != nil {
-		fmt.Println("initializing renderer:", err)
+		fmt.Println("initializing Renderer:", err)
 		return
 	}
-	defer renderer.Destroy()
-	pChar, err = NewPlayer(renderer)
+	defer Renderer.Destroy()
+	pChar, err = NewPlayer(Renderer)
 	if err != nil {
 		fmt.Println("creating player:", err)
 		return
@@ -74,17 +76,32 @@ func main() {
 				return
 			}
 		}
-		renderer.SetDrawColor(144, 144, 144, 0)
-		renderer.Clear()
+		Renderer.SetDrawColor(144, 144, 144, 0)
+		Renderer.Clear()
 
-		//levels.ObjectData[0].Draw(renderer, levels.ObjectData)
+		//levels.ObjectData[0].Draw(Renderer, levels.ObjectData)
+		Draw(Renderer, ObjectData)
 
-		pChar.Draw(renderer)
+		pChar.Draw(Renderer)
 		pChar.Update()
 
-		renderer.Present()
+		Renderer.Present()
 
 		checkCollision()
 
 	}
+}
+
+func Draw(Renderer *sdl.Renderer, ObjectData []levels.Object) {
+
+	//backgroundData.Tex.SetBlendMode(sdl.BLENDMODE_BLEND)
+	//Renderer.Copy(backgroundData.Tex, nil, nil)
+
+	for _, k := range ObjectData {
+		Renderer.Copy(k.Tex,
+			&sdl.Rect{X: int32(k.X), Y: int32(k.Y), W: int32(k.ObjectWidth), H: int32(k.ObjectHeight)},
+			&sdl.Rect{X: int32(k.X), Y: int32(k.Y), W: int32(k.ObjectWidth), H: int32(k.ObjectHeight)},
+		)
+	}
+
 }
