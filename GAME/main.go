@@ -21,16 +21,19 @@ var backgroundData levels.Object
 var pChar player
 
 func checkCollision() {
+	var keys = sdl.GetKeyboardState()
 	//Check if player is on same Y level
 	for i := range ObjectData {
 		if pChar.y+float64(pChar.playerHeight*4) >= float64(ObjectData[i].Y) && pChar.y+float64(pChar.playerHeight*4) < float64(ObjectData[i].Y+(ObjectData[i].ObjectHeight/2)) {
 
 			if pChar.x >= float64(ObjectData[i].X-16) && pChar.x <= float64(ObjectData[i].X+ObjectData[i].ObjectWidth-16) {
 				pChar.y -= float64(gravity)
-				JumpState = false
-				JumpTimer = 0
-				PlayerSpeedY = 7.00
-				gravity = 5.00
+				if keys[sdl.SCANCODE_UP] == 0 {
+					JumpState = false
+					JumpTimer = 0
+					PlayerSpeedY = 7.00
+					gravity = 5.00
+				}
 			}
 		}
 	}
@@ -71,7 +74,9 @@ func checkCollision() {
 	}
 
 	if pChar.x >= float64(pStart.EndData.X-16) {
-		currentLvl++
+		if currentLvl+1 <= totalLvl {
+			currentLvl++
+		}
 		fmt.Println(currentLvl)
 		ObjectData, backgroundData, pStart = decideLevel()
 		pChar.x = float64(pStart.X)

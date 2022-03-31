@@ -5,6 +5,7 @@ import (
 )
 
 var currentLvl = 1
+var totalLvl = 2
 var LevelObjects []levels.Object
 var LevelBG levels.Object
 var pStart levels.StartData
