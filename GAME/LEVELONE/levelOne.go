@@ -1,4 +1,4 @@
-package levelOne
+package levels
 
 import (
 	"github.com/veandco/go-sdl2/sdl"
@@ -69,7 +69,7 @@ func NewObject(renderer *sdl.Renderer) (objectData []Object, err error) {
 
 }
 
-func (o Object) Draw(renderer *sdl.Renderer, objData []Object) {
+/*func (o Object) Draw(renderer *sdl.Renderer, objData []Object) {
 
 	backgroundData.Tex.SetBlendMode(sdl.BLENDMODE_BLEND)
 	renderer.Copy(backgroundData.Tex, nil, nil)
@@ -82,7 +82,7 @@ func (o Object) Draw(renderer *sdl.Renderer, objData []Object) {
 	}
 
 }
-
+*/
 func (o Object) Update() {
 
 }

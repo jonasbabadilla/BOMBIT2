@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	levelOne "chaseGame/GAME/LEVELONE"
+	levels "chaseGame/GAME/LEVELONE"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -13,15 +13,16 @@ const (
 	screenHeight = 720
 )
 
+var ObjectData []levels.Object
+
 var pChar player
-var levelObject []levelOne.Object
 
 func checkCollision() {
 	//Check if player is on same Y level
-	for i := range levelObject {
-		if pChar.y+float64(pChar.playerHeight*4) >= float64(levelObject[i].Y) && pChar.y+float64(pChar.playerHeight*4) < float64(levelObject[i].Y+(levelObject[i].ObjectHeight/2)) {
+	for i := range ObjectData {
+		if pChar.y+float64(pChar.playerHeight*4) >= float64(ObjectData[i].Y) && pChar.y+float64(pChar.playerHeight*4) < float64(ObjectData[i].Y+(ObjectData[i].ObjectHeight/2)) {
 
-			if pChar.x >= float64(levelObject[i].X-16) && pChar.x <= float64(levelObject[i].X+levelObject[i].ObjectWidth-16) {
+			if pChar.x >= float64(ObjectData[i].X-16) && pChar.x <= float64(ObjectData[i].X+ObjectData[i].ObjectWidth-16) {
 				pChar.y -= float64(gravity)
 				JumpState = false
 				JumpTimer = 0
@@ -31,8 +32,8 @@ func checkCollision() {
 		}
 	}
 	if pChar.y+float64(pChar.playerHeight*4) >= screenHeight {
-		pChar.x = float64(levelOne.PlayerStart["X"])
-		pChar.y = float64(levelOne.PlayerStart["Y"])
+		pChar.x = float64(levels.PlayerStart["X"])
+		pChar.y = float64(levels.PlayerStart["Y"])
 	}
 
 }
@@ -63,7 +64,8 @@ func main() {
 		fmt.Println("creating player:", err)
 		return
 	}
-	levelObject, err = levelOne.NewObject(renderer)
+
+	ObjectData = decideLevel()
 
 	for {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
@@ -75,8 +77,7 @@ func main() {
 		renderer.SetDrawColor(144, 144, 144, 0)
 		renderer.Clear()
 
-		levelObject[0].Draw(renderer, levelObject)
-		levelObject[0].Update()
+		//levels.ObjectData[0].Draw(renderer, levels.ObjectData)
 
 		pChar.Draw(renderer)
 		pChar.Update()
