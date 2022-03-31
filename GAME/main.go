@@ -16,6 +16,7 @@ const (
 )
 
 var ObjectData []levels.Object
+var backgroundData levels.Object
 
 var pChar player
 
@@ -67,7 +68,7 @@ func main() {
 		return
 	}
 
-	ObjectData = decideLevel()
+	ObjectData, backgroundData = decideLevel()
 
 	for {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
@@ -94,8 +95,8 @@ func main() {
 
 func Draw(Renderer *sdl.Renderer, ObjectData []levels.Object) {
 
-	//backgroundData.Tex.SetBlendMode(sdl.BLENDMODE_BLEND)
-	//Renderer.Copy(backgroundData.Tex, nil, nil)
+	backgroundData.Tex.SetBlendMode(sdl.BLENDMODE_BLEND)
+	Renderer.Copy(backgroundData.Tex, nil, nil)
 
 	for _, k := range ObjectData {
 		Renderer.Copy(k.Tex,

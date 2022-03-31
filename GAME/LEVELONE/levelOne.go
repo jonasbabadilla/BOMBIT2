@@ -18,7 +18,7 @@ var objectData []Object
 var backgroundData Object
 var PlayerStart map[string]int
 
-func NewObject(renderer *sdl.Renderer) (objectData []Object, err error) {
+func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, err error) {
 
 	Surf, _ := sdl.LoadBMP("LEVELONE/levelOneLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
@@ -65,24 +65,6 @@ func NewObject(renderer *sdl.Renderer) (objectData []Object, err error) {
 
 	defer Surf.Free()
 
-	return objectData, nil
-
-}
-
-/*func (o Object) Draw(renderer *sdl.Renderer, objData []Object) {
-
-	backgroundData.Tex.SetBlendMode(sdl.BLENDMODE_BLEND)
-	renderer.Copy(backgroundData.Tex, nil, nil)
-
-	for _, k := range objData {
-		renderer.Copy(k.Tex,
-			&sdl.Rect{X: int32(k.X), Y: int32(k.Y), W: int32(k.ObjectWidth), H: int32(k.ObjectHeight)},
-			&sdl.Rect{X: int32(k.X), Y: int32(k.Y), W: int32(k.ObjectWidth), H: int32(k.ObjectHeight)},
-		)
-	}
-
-}
-*/
-func (o Object) Update() {
+	return objectData, backgroundData, nil
 
 }
