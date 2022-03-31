@@ -4,25 +4,9 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type Object struct {
-	Tex          *sdl.Texture
-	X, Y         int
-	ObjectWidth  int
-	ObjectHeight int
-}
+func LevelTwo(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, pStart StartData, err error) {
 
-var objectData []Object
-
-type StartData struct {
-	X, Y int
-}
-
-var backgroundData Object
-var PlayerStart StartData
-
-func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, PlayerStart StartData, err error) {
-
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelOneSprites/levelLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelTwoSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	blockOne := Object{
@@ -50,7 +34,7 @@ func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, Play
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelOneSprites/BG.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelTwoSprites/BG.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{
@@ -63,7 +47,7 @@ func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, Play
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 96, Y: 430}
+	PlayerStart = StartData{X: 96, Y: 100}
 
 	return objectData, backgroundData, PlayerStart, nil
 

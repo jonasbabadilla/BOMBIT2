@@ -30,8 +30,8 @@ func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 
 	p = player{
 		Tex:          Tex,
-		x:            96,
-		y:            430,
+		x:            float64(pStart.X),
+		y:            float64(pStart.Y),
 		playerWidth:  16,
 		playerHeight: 16,
 	}

@@ -35,8 +35,8 @@ func checkCollision() {
 		}
 	}
 	if pChar.y+float64(pChar.playerHeight*4) >= screenHeight {
-		pChar.x = float64(levels.PlayerStart["X"])
-		pChar.y = float64(levels.PlayerStart["Y"])
+		pChar.x = float64(pStart.X)
+		pChar.y = float64(pStart.Y)
 	}
 
 }
@@ -62,13 +62,14 @@ func main() {
 		return
 	}
 	defer Renderer.Destroy()
+
+	ObjectData, backgroundData, pStart = decideLevel()
+
 	pChar, err = NewPlayer(Renderer)
 	if err != nil {
 		fmt.Println("creating player:", err)
 		return
 	}
-
-	ObjectData, backgroundData = decideLevel()
 
 	for {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
