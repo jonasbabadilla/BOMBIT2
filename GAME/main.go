@@ -34,7 +34,46 @@ func checkCollision() {
 			}
 		}
 	}
+
+	//ATTEMPTED TO USE HASINTERSECTION FUNCTION
+	//IT DIDNT WORK
+	//TOO LAZY TO FIX
+
+	/*
+		for I := range ObjectData {
+			objectRect = sdl.Rect{
+				X: int32(ObjectData[I].X),
+				Y: int32(ObjectData[I].Y),
+				W: int32(ObjectData[I].ObjectWidth),
+				H: int32(ObjectData[I].ObjectHeight),
+			}
+		}
+
+		playerRect = sdl.Rect{
+			X: int32(pChar.x),
+			Y: int32(pChar.y),
+			W: int32(pChar.playerWidth),
+			H: int32(pChar.playerHeight),
+		}
+
+		if playerRect.HasIntersection(&objectRect) == true {
+			pChar.y -= float64(gravity)
+			JumpState = false
+			JumpTimer = 0
+			PlayerSpeedY = 7.00
+			gravity = 5.00
+		}
+	*/
+
 	if pChar.y+float64(pChar.playerHeight*4) >= screenHeight {
+		pChar.x = float64(pStart.X)
+		pChar.y = float64(pStart.Y)
+	}
+
+	if pChar.x >= float64(pStart.EndData.X-16) {
+		currentLvl++
+		fmt.Println(currentLvl)
+		ObjectData, backgroundData, pStart = decideLevel()
 		pChar.x = float64(pStart.X)
 		pChar.y = float64(pStart.Y)
 	}

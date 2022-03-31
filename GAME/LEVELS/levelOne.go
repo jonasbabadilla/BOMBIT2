@@ -4,22 +4,6 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type Object struct {
-	Tex          *sdl.Texture
-	X, Y         int
-	ObjectWidth  int
-	ObjectHeight int
-}
-
-var objectData []Object
-
-type StartData struct {
-	X, Y int
-}
-
-var backgroundData Object
-var PlayerStart StartData
-
 func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, PlayerStart StartData, err error) {
 
 	Surf, _ := sdl.LoadBMP("LEVELS/LevelOneSprites/levelLayout.bmp")
@@ -63,7 +47,10 @@ func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, Play
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 96, Y: 430}
+	PlayerStart = StartData{X: 96, Y: 430, EndData: struct {
+		X int
+		Y int
+	}{X: 1118, Y: 178}}
 
 	return objectData, backgroundData, PlayerStart, nil
 

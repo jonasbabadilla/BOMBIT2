@@ -47,7 +47,10 @@ func LevelTwo(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, pSta
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 96, Y: 100}
+	PlayerStart = StartData{X: 96, Y: 100, EndData: struct {
+		X int
+		Y int
+	}{X: 400, Y: 430}}
 
 	return objectData, backgroundData, PlayerStart, nil
 
