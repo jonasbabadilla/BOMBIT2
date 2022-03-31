@@ -76,7 +76,6 @@ func checkCollision() {
 		if currentLvl+1 <= totalLvl {
 			currentLvl++
 		}
-		fmt.Println(currentLvl)
 		ObjectData, backgroundData, pStart = decideLevel()
 		pChar.x = float64(pStart.X)
 		pChar.y = float64(pStart.Y)
