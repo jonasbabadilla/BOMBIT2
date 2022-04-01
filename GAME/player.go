@@ -42,8 +42,6 @@ func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 }
 
 func (p *player) Draw(renderer *sdl.Renderer) {
-	//x := playerSize / 2.0
-	//y := playerSize / 2.0
 
 	renderer.CopyEx(p.Tex,
 		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
