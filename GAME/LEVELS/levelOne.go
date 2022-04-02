@@ -9,6 +9,17 @@ func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, Play
 	Surf, _ := sdl.LoadBMP("LEVELS/LevelOneSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
+	/*
+		ScanTex, _ := renderer.CreateTexture(Surf.Format.Format, sdl.TEXTUREACCESS_STREAMING, 1280, 720)
+
+		ScanTex.Lock(&sdl.Rect{W: 1280, H:720, X: 0, Y: 0})
+
+		PixelFormat := sdl.MapRGB(Surf.Format, 0, 0, 0)
+
+		if err := Surf.SetColorKey(true, PixelFormat); err == nil {
+		}
+	*/
+
 	blockOne := Object{
 		Tex:          Tex,
 		X:            0,
