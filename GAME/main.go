@@ -73,12 +73,15 @@ func checkCollision() {
 	}
 
 	if pChar.x >= float64(pStart.EndData.X-16) {
-		if currentLvl+1 <= totalLvl {
-			currentLvl++
+		if Keys[sdl.SCANCODE_SPACE] == 1 {
+			if currentLvl+1 <= totalLvl {
+				currentLvl++
+			}
+			ObjectData, backgroundData, pStart = decideLevel()
+			pChar.x = float64(pStart.X)
+			pChar.y = float64(pStart.Y)
 		}
-		ObjectData, backgroundData, pStart = decideLevel()
-		pChar.x = float64(pStart.X)
-		pChar.y = float64(pStart.Y)
+
 	}
 
 }
