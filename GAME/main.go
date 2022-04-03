@@ -92,7 +92,7 @@ func main() {
 		return
 	}
 	window, err := sdl.CreateWindow(
-		"GAMING WITH SDL",
+		"The Horizon",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
 		screenWidth, screenHeight,
 		sdl.WINDOW_OPENGL)
