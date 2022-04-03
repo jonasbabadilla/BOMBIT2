@@ -1,7 +1,6 @@
 package levels
 
 import (
-	"fmt"
 	"image/color"
 
 	"github.com/veandco/go-sdl2/sdl"
@@ -15,7 +14,6 @@ func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, Play
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 	FormattedSurf, _ := Surf.ConvertFormat(sdl.PIXELFORMAT_RGB888, 0)
 	var colorBlack color.RGBA
-	var Count int
 
 	colorBlack = color.RGBA{0, 0, 0, 255}
 
@@ -29,8 +27,8 @@ func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, Play
 	for Y := 0; Y < FormattedSurf.Bounds().Dy(); Y++ {
 		for X := 0; X < FormattedSurf.Bounds().Dx(); X++ {
 			if FormattedSurf.At(X, Y) == colorBlack {
-				Count++
-				fmt.Println(X+1, Y+1, Count)
+
+				objectData = append(objectData, Object{})
 			}
 		}
 	}
