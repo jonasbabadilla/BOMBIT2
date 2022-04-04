@@ -5,12 +5,10 @@ import (
 )
 
 type Key struct {
-	Tex                       *sdl.Texture
-	x, y                      float64
+	Tex                 *sdl.Texture
+	x, y                float64
 	keyWidth, keyHeight int
-	
 }
-
 
 func NewKey(renderer *sdl.Renderer) (p player, e error) {
 
@@ -31,13 +29,7 @@ func NewKey(renderer *sdl.Renderer) (p player, e error) {
 func (k *Key) Draw(renderer *sdl.Renderer) {
 
 	renderer.Copy(k.Tex,
-	&sdl.Rect{},
-	&sdl.Rect{})
+		&sdl.Rect{},
+		&sdl.Rect{})
 
-	&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
-		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 64, H: 64},
-	
 }
-
-
-	
