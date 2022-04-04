@@ -13,7 +13,7 @@ func LevelFour(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Play
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelThreeSprites/BG.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelFourSprites/BG.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{
@@ -26,10 +26,10 @@ func LevelFour(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Play
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 252, Y: 332, EndData: struct {
+	PlayerStart = StartData{X: 624, Y: 624, EndData: struct {
 		X int
 		Y int
-	}{X: 1006, Y: 273}}
+	}{X: 593, Y: 185}}
 
 	return levelData, backgroundData, PlayerStart, nil
 
