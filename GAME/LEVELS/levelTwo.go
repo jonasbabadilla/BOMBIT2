@@ -1,6 +1,8 @@
 package levels
 
 import (
+	"image/color"
+
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -8,65 +10,55 @@ func LevelTwo(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, pSta
 
 	Surf, _ := sdl.LoadBMP("LEVELS/LevelTwoSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
+	FormattedSurf, _ := Surf.ConvertFormat(sdl.PIXELFORMAT_RGB888, 0)
 
-	objectData = append(objectData,
-		Object{
-			Tex:          Tex,
-			X:            483,
-			Y:            476,
-			ObjectWidth:  270,
-			ObjectHeight: 77,
-		},
-		Object{
-			Tex:          Tex,
-			X:            225,
-			Y:            679,
-			ObjectWidth:  347,
-			ObjectHeight: 87,
-		},
-		Object{
-			Tex:          Tex,
-			X:            8,
-			Y:            583,
-			ObjectWidth:  128,
-			ObjectHeight: 81,
-		},
-		Object{
-			Tex:          Tex,
-			X:            8,
-			Y:            409,
-			ObjectWidth:  128,
-			ObjectHeight: 81,
-		},
-		Object{
-			Tex:          Tex,
-			X:            8,
-			Y:            239,
-			ObjectWidth:  128,
-			ObjectHeight: 81,
-		},
-		Object{
-			Tex:          Tex,
-			X:            195,
-			Y:            179,
-			ObjectWidth:  240,
-			ObjectHeight: 51,
-		},
-		Object{
-			Tex:          Tex,
-			X:            561,
-			Y:            190,
-			ObjectWidth:  218,
-			ObjectHeight: 51,
-		},
-		Object{
-			Tex:          Tex,
-			X:            960,
-			Y:            180,
-			ObjectWidth:  288,
-			ObjectHeight: 82,
-		},
-	)
+	type initialPos struct {
+		X, Y  int
+		found bool
+	}
+
+	var corner initialPos
+	var pixCountX int
+	var pixCountY int
+
+	var colorBlack = color.RGBA{0, 0, 0, 255}
+
+	//THIS FINALLY WORKS
+	//IT SEARCHES THE LEVELLAYOUT.BMP FOR BLACK PIXELS
+	//DOESNT DO ANYTHING BUT PRINT THE X AND Y AND COUNT HOW MANY BLACK PXIELS IN TOTAL
+	//BUT LATER IT WILL AUTOMATICALLY TAKE THE WIDTH AND HEIGHT OF EVERY BLACK PLATFORM
+	//AND ADD IT TO THE LEVEL'S OBJECT DATA
+	//THAT WAY PLATFORMS GET ADDED AUTOMATICALLY
+	//NO MORE MANUALLY ADDING PLATFORMS!!!
+	for Y := 0; Y < FormattedSurf.Bounds().Dy(); Y++ {
+		for X := 0; X < FormattedSurf.Bounds().Dx(); X++ {
+			if FormattedSurf.At(X, Y) == colorBlack {
+				if corner.found != true {
+					corner.X = X
+					corner.Y = Y
+					corner.found = true
+				}
+				for j, h := X, Y; FormattedSurf.At(j+1, Y) == colorBlack; {
+					if FormattedSurf.At(j, h+1) == colorBlack {
+						h++
+					} else {
+						pixCountY = h
+						j++
+					}
+					pixCountX = j
+					X = j
+				}
+				objectData = append(objectData, Object{
+					Tex:          Tex,
+					X:            corner.X,
+					Y:            corner.Y,
+					ObjectWidth:  pixCountX - corner.X,
+					ObjectHeight: pixCountY - corner.Y,
+				})
+				corner.found = false
+			}
+		}
+	}
 
 	defer Surf.Free()
 

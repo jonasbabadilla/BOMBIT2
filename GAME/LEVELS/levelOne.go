@@ -6,16 +6,22 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-var byteCount int
-
 func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, PlayerStart StartData, err error) {
 
 	Surf, _ := sdl.LoadBMP("LEVELS/LevelOneSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 	FormattedSurf, _ := Surf.ConvertFormat(sdl.PIXELFORMAT_RGB888, 0)
-	var colorBlack color.RGBA
 
-	colorBlack = color.RGBA{0, 0, 0, 255}
+	type initialPos struct {
+		X, Y  int
+		found bool
+	}
+
+	var corner initialPos
+	var pixCountX int
+	var pixCountY int
+
+	var colorBlack = color.RGBA{0, 0, 0, 255}
 
 	//THIS FINALLY WORKS
 	//IT SEARCHES THE LEVELLAYOUT.BMP FOR BLACK PIXELS
@@ -27,33 +33,33 @@ func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, Play
 	for Y := 0; Y < FormattedSurf.Bounds().Dy(); Y++ {
 		for X := 0; X < FormattedSurf.Bounds().Dx(); X++ {
 			if FormattedSurf.At(X, Y) == colorBlack {
-
-				objectData = append(objectData, Object{})
+				if corner.found != true {
+					corner.X = X
+					corner.Y = Y
+					corner.found = true
+				}
+				for j, h := X, Y; FormattedSurf.At(j+1, Y) == colorBlack; {
+					if FormattedSurf.At(j, h+1) == colorBlack {
+						h++
+					} else {
+						pixCountY = h
+						Y = h
+						j++
+					}
+					pixCountX = j
+					X = j
+				}
+				objectData = append(objectData, Object{
+					Tex:          Tex,
+					X:            corner.X,
+					Y:            corner.Y,
+					ObjectWidth:  pixCountX - corner.X,
+					ObjectHeight: pixCountY - corner.Y,
+				})
+				corner.found = false
 			}
 		}
 	}
-	blockOne := Object{
-		Tex:          Tex,
-		X:            0,
-		Y:            542,
-		ObjectWidth:  388,
-		ObjectHeight: 97,
-	}
-	blockTwo := Object{
-		Tex:          Tex,
-		X:            481,
-		Y:            404,
-		ObjectWidth:  347,
-		ObjectHeight: 106,
-	}
-	blockThree := Object{
-		Tex:          Tex,
-		X:            987,
-		Y:            267,
-		ObjectWidth:  282,
-		ObjectHeight: 106,
-	}
-	objectData = append(objectData, blockOne, blockTwo, blockThree)
 
 	defer Surf.Free()
 
