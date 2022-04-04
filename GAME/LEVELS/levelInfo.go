@@ -20,6 +20,10 @@ type StartData struct {
 	}
 }
 
+type KeyData struct {
+	X, Y int
+}
+
 var backgroundData Object
 var PlayerStart StartData
 
