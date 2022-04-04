@@ -43,7 +43,7 @@ func LevelOne(renderer *sdl.Renderer) (objectData []Object, LevelBG Object, Play
 						h++
 					} else {
 						pixCountY = h
-						Y = h
+
 						j++
 					}
 					pixCountX = j
