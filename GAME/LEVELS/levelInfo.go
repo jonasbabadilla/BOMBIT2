@@ -25,6 +25,7 @@ var PlayerStart StartData
 
 func CreateLevel(Surf *sdl.Surface, Tex *sdl.Texture) (levelData []Object) {
 	FormattedSurf, _ := Surf.ConvertFormat(sdl.PIXELFORMAT_RGB888, 0)
+	FormattedSurf.SetColorKey(true, uint32(color.White.Y))
 
 	type initialPos struct {
 		X, Y  int
