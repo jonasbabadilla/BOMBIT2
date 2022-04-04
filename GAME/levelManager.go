@@ -5,7 +5,7 @@ import (
 )
 
 var currentLvl = 1
-var totalLvl = 3
+var totalLvl = 4
 var LevelObjects []levels.Object
 var LevelBG levels.Object
 var pStart levels.StartData
@@ -21,6 +21,9 @@ func decideLevel() ([]levels.Object, levels.Object, levels.StartData) {
 		return LevelObjects, LevelBG, pStart
 	case 3:
 		LevelObjects, LevelBG, pStart, _ = levels.LevelThree(Renderer)
+		return LevelObjects, LevelBG, pStart
+	case 4:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelFour(Renderer)
 		return LevelObjects, LevelBG, pStart
 	}
 
