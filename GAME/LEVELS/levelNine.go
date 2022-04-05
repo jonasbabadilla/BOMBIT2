@@ -5,7 +5,7 @@ import (
 )
 
 // cutscene
-func LevelEight(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
+func LevelNine(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
 
 	Surf, _ := sdl.LoadBMP("LEVELS/LevelEightSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)

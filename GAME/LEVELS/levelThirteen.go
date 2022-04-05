@@ -5,7 +5,7 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-func LevelTwo(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
+func LevelThirteen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
 
 	Surf, _ := sdl.LoadBMP("LEVELS/LevelTwoSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
