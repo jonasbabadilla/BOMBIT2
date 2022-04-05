@@ -29,7 +29,7 @@ func LevelThree(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Pla
 	PlayerStart = StartData{X: 902, Y: 556, EndData: struct {
 		X int
 		Y int
-	}{X: 301, Y: 107}}
+	}{X: 1082, Y: 107}}
 
 	return levelData, backgroundData, PlayerStart, nil
 

@@ -25,6 +25,9 @@ func decideLevel() ([]levels.Object, levels.Object, levels.StartData) {
 	case 4:
 		LevelObjects, LevelBG, pStart, _ = levels.LevelFour(Renderer)
 		return LevelObjects, LevelBG, pStart
+	case 5:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelFive(Renderer)
+		return LevelObjects, LevelBG, pStart
 
 	}
 

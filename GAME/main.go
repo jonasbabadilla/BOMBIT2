@@ -44,7 +44,7 @@ func checkCollision() {
 	if pChar.x >= float64(pStart.EndData.X-16) {
 		if Keys[sdl.SCANCODE_SPACE] == 1 {
 			if currentLvl+1 <= totalLvl {
-				currentLvl++
+				currentLvl += 1
 			}
 			ObjectData, backgroundData, pStart = decideLevel()
 			pChar.x = float64(pStart.X)
@@ -61,7 +61,7 @@ func main() {
 		return
 	}
 	window, err := sdl.CreateWindow(
-		"The Horizon",
+		"Some Game",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
 		screenWidth, screenHeight,
 		sdl.WINDOW_OPENGL)
@@ -100,6 +100,7 @@ func main() {
 
 		pChar.Draw(Renderer)
 		pChar.Update()
+
 		Renderer.Present()
 		checkCollision()
 
