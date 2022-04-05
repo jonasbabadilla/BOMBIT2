@@ -5,8 +5,8 @@ import (
 	"fmt"
 )
 
-var currentLvl = 7
-var totalLvl = 16
+var currentLvl = 10
+var totalLvl = 15
 var LevelObjects []levels.Object
 var LevelBG levels.Object
 var pStart levels.StartData
@@ -37,6 +37,31 @@ func decideLevel() ([]levels.Object, levels.Object, levels.StartData, levels.Obj
 	case 7:
 		LevelObjects, LevelBG, pStart, _ = levels.LevelSeven(Renderer)
 		return LevelObjects, LevelBG, pStart, levels.Object{}
+	case 8:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelEight(Renderer)
+		return LevelObjects, LevelBG, pStart, textData
+	case 9:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelNine(Renderer)
+		return LevelObjects, LevelBG, pStart, levels.Object{}
+	case 10:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelTen(Renderer)
+		return LevelObjects, LevelBG, pStart, levels.Object{}
+	case 11:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelEleven(Renderer)
+		return LevelObjects, LevelBG, pStart, levels.Object{}
+	case 12:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelTwelve(Renderer)
+		return LevelObjects, LevelBG, pStart, levels.Object{}
+	case 13:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelThirteen(Renderer)
+		return LevelObjects, LevelBG, pStart, levels.Object{}
+	case 14:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelFourteen(Renderer)
+		return LevelObjects, LevelBG, pStart, levels.Object{}
+	case 15:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelFifteen(Renderer)
+		return LevelObjects, LevelBG, pStart, levels.Object{}
+
 	}
 
 	return nil, levels.Object{}, levels.StartData{}, levels.Object{}

@@ -1,20 +1,20 @@
 package levels
 
+// cutscene
 import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-// cutscene
-func LevelTwelve(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
+func LevelTwo(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, PlayerStart StartData, err error) {
 
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelEightSprites/levelLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelTwoSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	levelData = CreateLevel(Surf, Tex)
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelEightSprites/BG.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelTwoSprites/BG.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{
