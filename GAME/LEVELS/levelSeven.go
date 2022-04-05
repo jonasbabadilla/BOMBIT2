@@ -6,11 +6,11 @@ import (
 
 type LevelUpdate int
 
-var Projectile = sdl.Rect{X: 10, Y: 10, W: 10, H: 10}
+//var Projectile = sdl.Rect{X: 10, Y: 10, W: 10, H: 10}
 
 func LevelSeven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, PlayerStart StartData, err error) {
 
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelFourSprites/levelLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelSevenSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	levelData = CreateLevel(Surf, Tex)
@@ -41,7 +41,9 @@ func LevelSeven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Pla
 
 }
 
+/*
 func (s *LevelUpdate) Update() {
 	Projectile.X += 1
 
 }
+*/

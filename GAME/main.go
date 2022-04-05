@@ -102,7 +102,7 @@ func main() {
 		pChar.Draw(Renderer)
 		pChar.Update()
 
-		levelType.Update()
+		//	levelType.Update()
 
 		Renderer.Present()
 		checkCollision()
