@@ -4,7 +4,8 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-func LevelEight(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
+// cutscene
+func LevelEle(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
 
 	Surf, _ := sdl.LoadBMP("LEVELS/LevelEightSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
