@@ -27,7 +27,7 @@ func LevelFive(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Play
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 10, Y: 588, EndData: struct {
+	PlayerStart = StartData{X: 100, Y: 0, EndData: struct {
 		X int
 		Y int
 	}{X: 1184, Y: 652}}
