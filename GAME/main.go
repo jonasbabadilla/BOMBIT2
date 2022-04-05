@@ -16,6 +16,7 @@ const (
 
 var ObjectData []levels.Object
 var backgroundData levels.Object
+var levelType levels.LevelUpdate
 
 var pChar player
 
@@ -100,6 +101,8 @@ func main() {
 
 		pChar.Draw(Renderer)
 		pChar.Update()
+
+		levelType.Update()
 
 		Renderer.Present()
 		checkCollision()
