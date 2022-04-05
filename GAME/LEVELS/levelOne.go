@@ -27,7 +27,7 @@ func LevelOne(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Playe
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelOneSprites/L1Text1.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelOneSprites/L1Text.bmp")
 	Text1, _ := renderer.CreateTextureFromSurface(Surf)
 
 	textData = Object{
