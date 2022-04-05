@@ -26,6 +26,7 @@ type KeyData struct {
 
 var backgroundData Object
 var PlayerStart StartData
+var textData Object
 
 func CreateLevel(Surf *sdl.Surface, Tex *sdl.Texture) (levelData []Object) {
 	FormattedSurf, _ := Surf.ConvertFormat(sdl.PIXELFORMAT_RGB888, 0)

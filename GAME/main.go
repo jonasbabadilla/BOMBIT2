@@ -46,7 +46,7 @@ func checkCollision() {
 			if currentLvl+1 <= totalLvl {
 				currentLvl += 1
 			}
-			ObjectData, backgroundData, pStart = decideLevel()
+			ObjectData, backgroundData, pStart, textData = decideLevel()
 			pChar.x = float64(pStart.X)
 			pChar.y = float64(pStart.Y)
 		}
@@ -77,7 +77,7 @@ func main() {
 	}
 	defer Renderer.Destroy()
 
-	ObjectData, backgroundData, pStart = decideLevel()
+	ObjectData, backgroundData, pStart, textData = decideLevel()
 
 	pChar, err = NewPlayer(Renderer)
 	if err != nil {
@@ -96,7 +96,7 @@ func main() {
 		Renderer.Clear()
 
 		//levels.ObjectData[0].Draw(Renderer, levels.ObjectData)
-		Draw(Renderer, ObjectData)
+		Draw(Renderer, ObjectData, textData)
 
 		pChar.Draw(Renderer)
 		pChar.Update()
@@ -107,7 +107,7 @@ func main() {
 	}
 }
 
-func Draw(Renderer *sdl.Renderer, ObjectData []levels.Object) {
+func Draw(Renderer *sdl.Renderer, ObjectData []levels.Object, textData levels.Object) {
 
 	backgroundData.Tex.SetBlendMode(sdl.BLENDMODE_BLEND)
 	Renderer.Copy(backgroundData.Tex, nil, nil)
@@ -118,5 +118,7 @@ func Draw(Renderer *sdl.Renderer, ObjectData []levels.Object) {
 			&sdl.Rect{X: int32(k.X), Y: int32(k.Y), W: int32(k.ObjectWidth), H: int32(k.ObjectHeight)},
 		)
 	}
+
+	Renderer.Copy(textData.Tex, &sdl.Rect{X: 0, Y: 0, W: 450, H: 220}, &sdl.Rect{X: 100, Y: 100, W: 450, H: 220})
 
 }
