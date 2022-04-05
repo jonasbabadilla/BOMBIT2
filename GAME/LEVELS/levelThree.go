@@ -26,10 +26,10 @@ func LevelThree(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Pla
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 36, Y: 129, EndData: struct {
+	PlayerStart = StartData{X: 902, Y: 556, EndData: struct {
 		X int
 		Y int
-	}{X: 1006, Y: 273}}
+	}{X: 301, Y: 107}}
 
 	return levelData, backgroundData, PlayerStart, nil
 

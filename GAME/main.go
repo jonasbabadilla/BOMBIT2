@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
-
 	levels "chaseGame/GAME/LEVELS"
+	"fmt"
 
 	"github.com/veandco/go-sdl2/sdl"
 )
