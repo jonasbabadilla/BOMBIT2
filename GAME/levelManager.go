@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-var currentLvl = 6
+var currentLvl = 2
 var totalLvl = 16
 var LevelObjects []levels.Object
 var LevelBG levels.Object
