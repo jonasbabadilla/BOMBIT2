@@ -100,9 +100,7 @@ func main() {
 
 		pChar.Draw(Renderer)
 		pChar.Update()
-
 		Renderer.Present()
-
 		checkCollision()
 
 	}
