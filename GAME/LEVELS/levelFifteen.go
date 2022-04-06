@@ -35,5 +35,3 @@ func LevelFifteen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, p
 	return levelData, backgroundData, PlayerStart, nil
 
 }
-
-func (p *player) Update()

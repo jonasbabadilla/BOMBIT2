@@ -7,7 +7,7 @@ import (
 
 func LevelEight(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
 
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelTwoSprites/levelLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelEightSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	levelData = CreateLevel(Surf, Tex)
