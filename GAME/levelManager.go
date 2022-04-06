@@ -2,10 +2,9 @@ package main
 
 import (
 	levels "chaseGame/GAME/LEVELS"
-	"fmt"
 )
 
-var currentLvl = 4
+var currentLvl = 11
 var totalLvl = 18
 var LevelObjects []levels.Object
 var LevelBG levels.Object
@@ -13,7 +12,6 @@ var pStart levels.StartData
 var textData levels.Object
 
 func decideLevel() ([]levels.Object, levels.Object, levels.StartData, levels.Object) {
-	fmt.Println("Current Level:", currentLvl)
 
 	switch currentLvl {
 	case 1:
