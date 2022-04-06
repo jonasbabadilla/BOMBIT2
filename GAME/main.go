@@ -65,7 +65,7 @@ func main() {
 		return
 	}
 	window, err := sdl.CreateWindow(
-		"Some Game",
+		"THE HORIZON",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
 		screenWidth, screenHeight,
 		sdl.WINDOW_OPENGL)
