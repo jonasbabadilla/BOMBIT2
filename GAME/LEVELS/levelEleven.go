@@ -1,20 +1,20 @@
 package levels
 
-// cutscene
+// puzzle
 import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-func LevelEleven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
+func LevelEleven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, PlayerStart StartData, err error) {
 
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelTwoSprites/levelLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelElevenSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	levelData = CreateLevel(Surf, Tex)
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelTwoSprites/BG.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelElevenSprites/BG.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{
@@ -27,10 +27,10 @@ func LevelEleven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pS
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 10, Y: 588, EndData: struct {
+	PlayerStart = StartData{X: 598, Y: 630, EndData: struct {
 		X int
 		Y int
-	}{X: 1184, Y: 652}}
+	}{X: 1189, Y: 124}}
 
 	return levelData, backgroundData, PlayerStart, nil
 

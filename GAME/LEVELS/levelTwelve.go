@@ -7,14 +7,14 @@ import (
 // cutscene
 func LevelTwelve(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
 
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelEightSprites/levelLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelTwelveSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	levelData = CreateLevel(Surf, Tex)
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelEightSprites/BG.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelTwelveSprites/BG.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{

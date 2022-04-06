@@ -1,12 +1,9 @@
 package levels
 
+// puzzle
 import (
 	"github.com/veandco/go-sdl2/sdl"
 )
-
-//type LevelUpdate int
-
-//var Projectile = sdl.Rect{X: 10, Y: 10, W: 10, H: 10}
 
 func LevelTen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, PlayerStart StartData, err error) {
 
@@ -30,20 +27,11 @@ func LevelTen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Playe
 
 	defer Surf.Free()
 
-	// When you look at the levelLayout in LevelThreeSprites folder, do not be fooled by the x coordinates
-	// of the pink box. I was and I lost 45 minutes in real-time minutes and 2 years of my life span
-	PlayerStart = StartData{X: 50, Y: 477, EndData: struct {
+	PlayerStart = StartData{X: 902, Y: 556, EndData: struct {
 		X int
 		Y int
-	}{X: 1132, Y: 630}}
+	}{X: 1082, Y: 107}}
 
 	return levelData, backgroundData, PlayerStart, nil
 
 }
-
-/*
-func (s *LevelUpdate) Update() {
-	Projectile.X += 1
-
-}
-*/
