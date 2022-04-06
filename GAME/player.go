@@ -27,7 +27,7 @@ var Keys = sdl.GetKeyboardState()
 
 func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 
-	char, _ := sdl.LoadBMP("CharSprites/playerSprite.bmp")
+	char, _ := sdl.LoadBMP("CharSprites/playerOneSprite.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(char)
 
 	p = player{
