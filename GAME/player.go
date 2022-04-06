@@ -66,6 +66,7 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 
 func (p *player) DrawTwo(renderer *sdl.Renderer) {
 
+	switched = true
 	renderer.CopyEx(p.Tex2,
 		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
 		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 64, H: 64},
@@ -115,24 +116,24 @@ func (p *player) CalcJump() {
 
 func (p *player) BotOne(renderer *sdl.Renderer) {
 
-	renderer.CopyEx(p.Tex2,
-		&sdl.Rect{X: 0, Y: 0, W: 16, H: 16},
-		&sdl.Rect{X: int32(BotX), Y: int32(BotY), W: 64, H: 64},
-		0.0,
-		&sdl.Point{},
-		BotDirection,
-	)
-}
+	if switched == false {
+		renderer.CopyEx(p.Tex2,
+			&sdl.Rect{X: 0, Y: 0, W: 16, H: 16},
+			&sdl.Rect{X: int32(BotX), Y: int32(BotY), W: 64, H: 64},
+			0.0,
+			&sdl.Point{},
+			BotDirection,
+		)
+	} else {
+		renderer.CopyEx(p.Tex,
+			&sdl.Rect{X: 0, Y: 0, W: 16, H: 16},
+			&sdl.Rect{X: int32(BotX), Y: int32(BotY), W: 64, H: 64},
+			0.0,
+			&sdl.Point{},
+			BotDirection,
+		)
+	}
 
-func (p *player) BotTwo(renderer *sdl.Renderer, X int32, Y int32) {
-
-	renderer.CopyEx(p.Tex,
-		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
-		&sdl.Rect{X: 0, Y: 0, W: 64, H: 64},
-		0.0,
-		&sdl.Point{},
-		sdl.FLIP_NONE,
-	)
 }
 
 func (p *player) EndSpawn(renderer *sdl.Renderer) {

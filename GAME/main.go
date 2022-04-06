@@ -21,6 +21,7 @@ var levelType levels.LevelUpdate
 var pChar player
 var delay int
 var visible bool
+var switched bool
 
 func checkCollision() {
 	//Check if player is on same Y level
