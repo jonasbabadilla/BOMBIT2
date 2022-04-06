@@ -100,6 +100,25 @@ func main() {
 		Draw(Renderer, ObjectData, textData)
 
 		pChar.Draw(Renderer)
+		switch currentLvl {
+		case 1:
+
+			pChar.BotOne(Renderer)
+
+		case 5:
+			pChar.DrawTwo(Renderer)
+			pChar.Bot(Renderer)
+		case 6:
+			pChar.DrawTwo(Renderer)
+		case 7:
+			pChar.DrawTwo(Renderer)
+		case 8:
+			pChar.DrawTwo(Renderer)
+		case 12:
+			pChar.DrawTwo(Renderer)
+		case 13:
+			pChar.DrawTwo(Renderer)
+		}
 		pChar.Update()
 
 		//	levelType.Update()

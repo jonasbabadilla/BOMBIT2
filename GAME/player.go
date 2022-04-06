@@ -6,6 +6,7 @@ import (
 
 type player struct {
 	Tex                       *sdl.Texture
+	Tex2                      *sdl.Texture
 	x, y                      float64
 	playerWidth, playerHeight int
 }
@@ -30,14 +31,20 @@ func NewPlayer(renderer *sdl.Renderer) (p player, e error) {
 	char, _ := sdl.LoadBMP("CharSprites/playerOneSprite.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(char)
 
+	char2, _ := sdl.LoadBMP("CharSprites/playerTwoSprite.bmp")
+	Tex2, _ := renderer.CreateTextureFromSurface(char2)
+
 	p = player{
 		Tex:          Tex,
+		Tex2:         Tex2,
 		x:            float64(pStart.X),
 		y:            float64(pStart.Y),
 		playerWidth:  16,
 		playerHeight: 16,
 	}
+
 	defer char.Free()
+
 	return p, nil
 }
 
@@ -50,9 +57,22 @@ func (p *player) Draw(renderer *sdl.Renderer) {
 		&sdl.Point{},
 		charDirection,
 	)
+
 }
 
+func (p *player) DrawTwo(renderer *sdl.Renderer) {
+
+	renderer.CopyEx(p.Tex2,
+		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
+		&sdl.Rect{X: int32(p.x), Y: int32(p.y), W: 64, H: 64},
+		0.0,
+		&sdl.Point{},
+		charDirection,
+	)
+
+}
 func (p *player) Update() {
+
 	Keys = sdl.GetKeyboardState()
 	if Keys[sdl.SCANCODE_LEFT] == 1 {
 		p.x -= PlayerSpeedX
@@ -87,4 +107,26 @@ func (p *player) CalcJump() {
 		}
 	}
 	checkCollision()
+}
+
+func (p *player) BotOne(renderer *sdl.Renderer, X int32, Y int32) {
+
+	renderer.CopyEx(p.Tex,
+		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
+		&sdl.Rect{Y: 0, X: 0, W: 64, H: 64},
+		0.0,
+		&sdl.Point{},
+		charDirection,
+	)
+}
+
+func (p *player) BotTwo(renderer *sdl.Renderer, X int32, Y int32) {
+
+	renderer.CopyEx(p.Tex2,
+		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
+		&sdl.Rect{X: 0, Y: 0, W: 64, H: 64},
+		0.0,
+		&sdl.Point{},
+		charDirection,
+	)
 }
