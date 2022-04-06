@@ -79,6 +79,15 @@ moving forward
 
     lvl 15: hide the levelLayout, instead, show just the background
 
+        lvl 15: if char collides with charTwo or reaches a certain x, one ending will occur (Update function?)
+                if char y reaches the bottom, instead of respawning, leads to ending 2
+
+        lvl 6: update function for when charTwo reaches a certain x, charOne spawns in
+
+    we are so close
+
+
+    
 
   
   
