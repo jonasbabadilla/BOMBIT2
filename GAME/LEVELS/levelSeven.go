@@ -30,7 +30,7 @@ func LevelSeven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Pla
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 28, Y: 48, EndData: struct {
+	PlayerStart = StartData{X: 28, Y: 28, EndData: struct {
 		X int
 		Y int
 	}{X: 1114, Y: 669}}
