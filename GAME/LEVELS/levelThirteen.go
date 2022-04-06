@@ -7,7 +7,7 @@ import (
 
 func LevelThirteen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
 
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelThreeSprites/levelLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelThirteenSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	levelData = CreateLevel(Surf, Tex)
@@ -27,10 +27,10 @@ func LevelThirteen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, 
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 902, Y: 556, EndData: struct {
+	PlayerStart = StartData{X: 46, Y: 5, EndData: struct {
 		X int
 		Y int
-	}{X: 1082, Y: 107}}
+	}{X: 1168, Y: 56}}
 
 	return levelData, backgroundData, PlayerStart, nil
 
