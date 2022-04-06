@@ -17,7 +17,7 @@ func LevelSeven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Pla
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelFourSprites/BG.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelSevenSprites/BG.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{
@@ -30,8 +30,6 @@ func LevelSeven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Pla
 
 	defer Surf.Free()
 
-	// When you look at the levelLayout in LevelThreeSprites folder, do not be fooled by the x coordinates
-	// of the pink box. I was and I lost 45 minutes in real-time minutes and 2 years of my life span
 	PlayerStart = StartData{X: 902, Y: 556, EndData: struct {
 		X int
 		Y int
@@ -40,10 +38,3 @@ func LevelSeven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Pla
 	return levelData, backgroundData, PlayerStart, nil
 
 }
-
-/*
-func (s *LevelUpdate) Update() {
-	Projectile.X += 1
-
-}
-*/
