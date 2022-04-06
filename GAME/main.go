@@ -19,6 +19,8 @@ var backgroundData levels.Object
 var levelType levels.LevelUpdate
 
 var pChar player
+var delay int
+var visible bool
 
 func checkCollision() {
 	//Check if player is on same Y level
@@ -86,6 +88,9 @@ func main() {
 		return
 	}
 
+	BotDirection = sdl.FLIP_HORIZONTAL
+	visible = true
+
 	for {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 			switch event.(type) {
@@ -102,11 +107,11 @@ func main() {
 		pChar.Draw(Renderer)
 		switch currentLvl {
 		case 2:
-			pChar.EndSpawn(Renderer)
-
+			Update()
 		case 5:
-
+			pChar.DrawTwo(Renderer)
 		case 6:
+			Update()
 			pChar.DrawTwo(Renderer)
 		case 7:
 			pChar.DrawTwo(Renderer)
@@ -119,12 +124,29 @@ func main() {
 		}
 		pChar.Update()
 
-		//	levelType.Update()
-
 		Renderer.Present()
 		checkCollision()
 
 	}
+}
+
+func Update() {
+
+	if visible == true {
+		delay++
+		if delay >= 100 {
+			BotX += 2
+			BotDirection = sdl.FLIP_NONE
+		}
+		pChar.BotOne(Renderer)
+	}
+
+	if visible == false {
+		if pChar.x > 640 {
+			visible = true
+		}
+	}
+
 }
 
 func Draw(Renderer *sdl.Renderer, ObjectData []levels.Object, textData levels.Object) {

@@ -20,9 +20,13 @@ var gravity = 5.00
 var JumpState bool
 
 var charDirection sdl.RendererFlip
+var BotDirection sdl.RendererFlip
 
 var PlayerSpeedX = 3.00
 var PlayerSpeedY = 7.00
+
+var BotX int
+var BotY int
 
 var Keys = sdl.GetKeyboardState()
 
@@ -109,14 +113,14 @@ func (p *player) CalcJump() {
 	checkCollision()
 }
 
-func (p *player) BotOne(renderer *sdl.Renderer, X int32, Y int32) {
+func (p *player) BotOne(renderer *sdl.Renderer) {
 
-	renderer.CopyEx(p.Tex,
-		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
-		&sdl.Rect{Y: 0, X: 0, W: 64, H: 64},
+	renderer.CopyEx(p.Tex2,
+		&sdl.Rect{X: 0, Y: 0, W: 16, H: 16},
+		&sdl.Rect{X: int32(BotX), Y: int32(BotY), W: 64, H: 64},
 		0.0,
 		&sdl.Point{},
-		charDirection,
+		BotDirection,
 	)
 }
 
