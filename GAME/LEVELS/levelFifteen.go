@@ -7,14 +7,14 @@ import (
 
 func LevelFifteen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
 
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelFifteenSprites/LEVELLAYOUTA.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelFifteenSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	levelData = CreateLevel(Surf, Tex)
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelFifteenSprites/LEVELLAYOUTA.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelFifteenSprites/BGT.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{
