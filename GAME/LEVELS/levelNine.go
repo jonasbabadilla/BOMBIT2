@@ -27,11 +27,6 @@ func LevelNine(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pSta
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 10, Y: 588, EndData: struct {
-		X int
-		Y int
-	}{X: 1184, Y: 652}}
-
 	return levelData, backgroundData, PlayerStart, nil
 
 }

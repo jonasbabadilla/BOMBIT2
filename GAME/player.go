@@ -133,7 +133,6 @@ func (p *player) BotOne(renderer *sdl.Renderer) {
 			BotDirection,
 		)
 	}
-
 }
 
 func (p *player) EndSpawn(renderer *sdl.Renderer) {
