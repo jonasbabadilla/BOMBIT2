@@ -10,7 +10,7 @@ type LevelUpdate int
 
 func LevelSeven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, PlayerStart StartData, err error) {
 
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelThreeSprites/levelLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelSevenSprites/levelLayout.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	levelData = CreateLevel(Surf, Tex)
@@ -30,10 +30,10 @@ func LevelSeven(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Pla
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 902, Y: 556, EndData: struct {
+	PlayerStart = StartData{X: 28, Y: 48, EndData: struct {
 		X int
 		Y int
-	}{X: 1082, Y: 107}}
+	}{X: 1114, Y: 669}}
 
 	return levelData, backgroundData, PlayerStart, nil
 

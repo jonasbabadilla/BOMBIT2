@@ -4,7 +4,7 @@ import (
 	levels "chaseGame/GAME/LEVELS"
 )
 
-var currentLvl = 2
+var currentLvl = 7
 var totalLvl = 16
 var LevelObjects []levels.Object
 var LevelBG levels.Object

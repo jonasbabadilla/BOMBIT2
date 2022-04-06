@@ -120,17 +120,6 @@ func (p *player) BotOne(renderer *sdl.Renderer, X int32, Y int32) {
 	)
 }
 
-func (p *player) BotTwo(renderer *sdl.Renderer, X int32, Y int32) {
-
-	renderer.CopyEx(p.Tex2,
-		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
-		&sdl.Rect{X: 0, Y: 0, W: 64, H: 64},
-		0.0,
-		&sdl.Point{},
-		charDirection,
-	)
-}
-
 func (p *player) EndSpawn(renderer *sdl.Renderer) {
 
 	renderer.CopyEx(p.Tex2,
