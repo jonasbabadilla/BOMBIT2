@@ -5,16 +5,16 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-func LevelFifteen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, pStart StartData, err error) {
+func LevelSixteen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, PlayerStart StartData, err error) {
 
-	Surf, _ := sdl.LoadBMP("LEVELS/LevelFifteenSprites/levelLayout.bmp")
+	Surf, _ := sdl.LoadBMP("LEVELS/LevelSixteenSprites/levelLayoutA.bmp")
 	Tex, _ := renderer.CreateTextureFromSurface(Surf)
 
 	levelData = CreateLevel(Surf, Tex)
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelFifteenSprites/BGT.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelSixteenSprites/BGB.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{
@@ -27,10 +27,10 @@ func LevelFifteen(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, p
 
 	defer Surf.Free()
 
-	PlayerStart = StartData{X: 33, Y: 241, EndData: struct {
+	PlayerStart = StartData{X: 10, Y: 588, EndData: struct {
 		X int
 		Y int
-	}{X: 1008, Y: 485}}
+	}{X: 1280, Y: 720}}
 
 	return levelData, backgroundData, PlayerStart, nil
 

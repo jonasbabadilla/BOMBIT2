@@ -4,8 +4,8 @@ import (
 	levels "chaseGame/GAME/LEVELS"
 )
 
-var currentLvl = 15
-var totalLvl = 16
+var currentLvl = 1
+var totalLvl = 17
 var LevelObjects []levels.Object
 var LevelBG levels.Object
 var pStart levels.StartData
@@ -65,6 +65,9 @@ func decideLevel() ([]levels.Object, levels.Object, levels.StartData, levels.Obj
 		return LevelObjects, LevelBG, pStart, levels.Object{}
 	case 15:
 		LevelObjects, LevelBG, pStart, _ = levels.LevelFifteen(Renderer)
+		return LevelObjects, LevelBG, pStart, levels.Object{}
+	case 16:
+		LevelObjects, LevelBG, pStart, _ = levels.LevelSixteen(Renderer)
 		return LevelObjects, LevelBG, pStart, levels.Object{}
 
 	}

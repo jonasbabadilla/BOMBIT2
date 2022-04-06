@@ -145,3 +145,15 @@ func (p *player) EndSpawn(renderer *sdl.Renderer) {
 		charDirection,
 	)
 }
+
+func (p *player) FinalDraw(renderer *sdl.Renderer) {
+
+	renderer.CopyEx(p.Tex2,
+		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
+		&sdl.Rect{X: 1050, Y: 485, W: 64, H: 64},
+		0.0,
+		&sdl.Point{},
+		charDirection,
+	)
+
+}

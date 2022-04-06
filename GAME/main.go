@@ -65,7 +65,7 @@ func main() {
 		return
 	}
 	window, err := sdl.CreateWindow(
-		"Some Game",
+		"The Horizon",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
 		screenWidth, screenHeight,
 		sdl.WINDOW_OPENGL)
@@ -122,6 +122,8 @@ func main() {
 			pChar.DrawTwo(Renderer)
 		case 13:
 			pChar.DrawTwo(Renderer)
+		case 15:
+			pChar.FinalDraw(Renderer)
 		}
 		pChar.Update()
 
