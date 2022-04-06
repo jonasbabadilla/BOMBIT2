@@ -14,7 +14,7 @@ func LevelThree(renderer *sdl.Renderer) (levelData []Object, LevelBG Object, Pla
 
 	defer Surf.Free()
 
-	Surf, _ = sdl.LoadBMP("LEVELS/LevelThreeSprites/BG.bmp")
+	Surf, _ = sdl.LoadBMP("LEVELS/LevelThreeSprites/BG3.bmp")
 	BG, _ := renderer.CreateTextureFromSurface(Surf)
 
 	backgroundData = Object{
