@@ -122,6 +122,10 @@ func Draw(Renderer *sdl.Renderer, ObjectData []levels.Object, textData levels.Ob
 		)
 	}
 
-	Renderer.Copy(textData.Tex, &sdl.Rect{X: 0, Y: 0, W: 450, H: 220}, &sdl.Rect{X: 100, Y: 100, W: 450, H: 220})
+	Renderer.Copy(
+		textData.Tex,
+		&sdl.Rect{X: 0, Y: 0, W: int32(textData.ObjectWidth), H: int32(textData.ObjectHeight)},
+		&sdl.Rect{X: 100, Y: 100, W: int32(textData.ObjectWidth), H: int32(textData.ObjectHeight)},
+	)
 
 }
