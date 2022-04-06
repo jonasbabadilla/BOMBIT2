@@ -19,6 +19,9 @@ func decideLevel() ([]levels.Object, levels.Object, levels.StartData, levels.Obj
 		return LevelObjects, LevelBG, pStart, textData
 	case 2:
 		LevelObjects, LevelBG, pStart, _ = levels.LevelTwo(Renderer)
+		BotX = 1200
+		BotY = 585
+		delay = 0
 		return LevelObjects, LevelBG, pStart, levels.Object{}
 	case 3:
 		LevelObjects, LevelBG, pStart, _ = levels.LevelThree(Renderer)
@@ -31,6 +34,10 @@ func decideLevel() ([]levels.Object, levels.Object, levels.StartData, levels.Obj
 		return LevelObjects, LevelBG, pStart, levels.Object{}
 	case 6:
 		LevelObjects, LevelBG, pStart, _ = levels.LevelSix(Renderer)
+		visible = false
+		BotX = 0
+		BotY = 585
+		delay = 0
 		return LevelObjects, LevelBG, pStart, levels.Object{}
 	case 7:
 		LevelObjects, LevelBG, pStart, _ = levels.LevelSeven(Renderer)
