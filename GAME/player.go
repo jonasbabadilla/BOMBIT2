@@ -134,3 +134,14 @@ func (p *player) BotTwo(renderer *sdl.Renderer, X int32, Y int32) {
 		sdl.FLIP_NONE,
 	)
 }
+
+func (p *player) EndSpawn(renderer *sdl.Renderer) {
+
+	renderer.CopyEx(p.Tex2,
+		&sdl.Rect{X: CharFrameX, Y: CharFrameY, W: 16, H: 16},
+		&sdl.Rect{X: 1000, Y: 600, W: 64, H: 64},
+		0.0,
+		&sdl.Point{},
+		charDirection,
+	)
+}
