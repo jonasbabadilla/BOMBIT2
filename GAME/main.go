@@ -101,13 +101,11 @@ func main() {
 
 		pChar.Draw(Renderer)
 		switch currentLvl {
-		case 1:
-
-			pChar.BotOne(Renderer)
+		case 2:
+			pChar.EndSpawn(Renderer)
 
 		case 5:
-			pChar.DrawTwo(Renderer)
-			pChar.Bot(Renderer)
+
 		case 6:
 			pChar.DrawTwo(Renderer)
 		case 7:
